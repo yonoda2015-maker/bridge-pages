@@ -1,0 +1,414 @@
+<title>Draw Lines — 40 Years, One Method</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --surface: #12161f;
+    --surface-2: #171d29;
+    --line: #232b3a;
+    --text: #eef1f6;
+    --muted: #7c8698;
+    --accent: #4d8dff;
+    --accent-soft: #2c4f8f;
+    --gold: #d9a441;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .eyebrow .badge {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 11px;
+    background: rgba(217,164,65,0.12);
+    border: 1px solid rgba(217,164,65,0.35);
+    color: var(--gold);
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  h1 {
+    font-size: clamp(30px, 6.4vw, 44px);
+    font-weight: 800;
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0 0 18px;
+    color: var(--text);
+  }
+
+  h1 span { color: var(--accent); }
+
+  .lede {
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 54ch;
+    margin: 0 0 36px;
+  }
+
+  .chart-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 22px 18px;
+    margin-bottom: 36px;
+  }
+
+  .chart-label {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .chart-label .live {
+    color: var(--accent);
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 220px;
+  }
+
+  .chart-caption {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .chart-caption b { color: var(--accent); font-weight: 700; }
+
+  .track-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 36px;
+  }
+
+  .track-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .track-title {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .track-years {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .track-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-label {
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .story {
+    border-left: 2px solid var(--accent-soft);
+    padding-left: 18px;
+    margin: 0 0 40px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #c8cede;
+  }
+
+  .story p { margin: 0 0 12px; }
+  .story p:last-child { margin-bottom: 0; }
+  .story .kicker { color: var(--accent); font-weight: 600; }
+
+  .free-block {
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px 24px;
+    margin-bottom: 36px;
+  }
+
+  .free-block .tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .free-block p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+
+  .cta {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: #061224;
+    font-weight: 700;
+    font-size: 15.5px;
+    text-decoration: none;
+    padding: 17px 24px;
+    border-radius: 8px;
+    letter-spacing: -0.005em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(77,141,255,0.22);
+  }
+
+  .cta-sub {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  .fine {
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: #495166;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta { transition: none; }
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="eyebrow"><span class="badge">EST. 1986</span>Draw Lines — 40 Years on the Chart</div>
+
+  <h1>Forty years in this market.<br><span>The method got simpler, not smarter.</span></h1>
+
+  <p class="lede">
+    I've traded through five recessions and two crashes, and every
+    indicator that promised to replace judgment. None of them survived
+    a real drawdown. One thing did: knowing where price has already
+    been.
+  </p>
+
+  <div class="chart-panel">
+    <div class="chart-label"><span>PRICE</span><span class="live">THE LEVEL</span></div>
+    <canvas id="levelChart" width="1160" height="440"></canvas>
+    <div class="chart-caption">
+      Price doesn't need to be predicted — it returns to where it's
+      already been respected. <b>Mark the level. Wait.</b> That's the
+      entire trade.
+    </div>
+  </div>
+
+  <div class="track-card">
+    <div class="track-head">
+      <span class="track-title">Track Record</span>
+      <span class="track-years">40 years active</span>
+    </div>
+    <div class="track-stats">
+      <div class="stat"><span class="stat-num">5</span><span class="stat-label">Recessions traded</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">Indicators used today</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Lines on the chart</span></div>
+    </div>
+  </div>
+
+  <div class="story">
+    <p><span class="kicker">Early on:</span> I added tools to my chart,
+    thinking the next one would finally explain what price was about to
+    do. By year ten I had twelve of them. By year twenty I had none.</p>
+    <p><span class="kicker">What replaced them:</span> four decades of
+    watching the same behavior repeat. That single observation has
+    outlasted every strategy I've retired.</p>
+  </div>
+
+  <div class="free-block">
+    <div class="tag">No cost. No card. Just the room.</div>
+    <p>
+      Every week I post the levels I'm actually watching — the same
+      ones I'd mark on my own chart after 40 years of doing this. The
+      free chat is where that goes out first, along with how each one
+      plays out after.
+    </p>
+    <a class="cta" href="https://whop.com/draw-lines-make-money-llc-d95e/course-updates?a=greekrummy9a65" target="_blank" rel="noopener">
+      Join the free chart room →
+    </a>
+    <div class="cta-sub">Free to join. Leave whenever it stops being useful.</div>
+  </div>
+
+  <div class="fine">
+    Not financial advice. Trading involves substantial risk of loss, and
+    any levels shared are for educational discussion, not signals to
+    act on blindly. This page contains an affiliate link; I may earn a
+    commission at no extra cost to you.
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var canvas = document.getElementById('levelChart');
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var levelY = 300;
+  var points = [
+    380, 360, 330, 300, 260, 230, 210, 230, 270, 300,
+    330, 300, 260, 220, 200, 230, 270, 300, 310, 300,
+    270, 240, 220, 240, 280, 300
+  ];
+
+  function drawGrid() {
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    for (var y = 40; y < H - 20; y += 66) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+  }
+
+  function drawLevel() {
+    ctx.strokeStyle = '#d9a441';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([10, 8]);
+    ctx.beginPath();
+    ctx.moveTo(0, levelY);
+    ctx.lineTo(W, levelY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  function drawPrice(progress) {
+    var n = points.length;
+    var visibleCount = Math.max(2, Math.floor(n * progress));
+
+    var grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, 'rgba(77,141,255,0.22)');
+    grad.addColorStop(1, 'rgba(77,141,255,0)');
+
+    ctx.beginPath();
+    for (var k = 0; k < visibleCount; k++) {
+      var xk = (k / (n - 1)) * W;
+      var yk = points[k];
+      if (k === 0) ctx.moveTo(xk, yk); else ctx.lineTo(xk, yk);
+    }
+    ctx.lineTo(((visibleCount - 1) / (n - 1)) * W, H);
+    ctx.lineTo(0, H);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    ctx.strokeStyle = '#4d8dff';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    for (var i = 0; i < visibleCount; i++) {
+      var x = (i / (n - 1)) * W;
+      var y = points[i];
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    ctx.fillStyle = '#d9a441';
+    for (var j = 1; j < visibleCount - 1; j++) {
+      if (Math.abs(points[j] - levelY) < 6) {
+        var xx = (j / (n - 1)) * W;
+        ctx.beginPath();
+        ctx.arc(xx, points[j], 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function render(progress) {
+    ctx.clearRect(0, 0, W, H);
+    drawGrid();
+    drawLevel();
+    drawPrice(progress);
+  }
+
+  if (reduceMotion) {
+    render(1);
+    return;
+  }
+
+  var start = null;
+  var duration = 1600;
+  function frame(ts) {
+    if (!start) start = ts;
+    var elapsed = ts - start;
+    var progress = Math.min(1, elapsed / duration);
+    render(progress);
+    if (progress < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>

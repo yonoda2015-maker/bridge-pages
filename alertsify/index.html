@@ -1,0 +1,352 @@
+<title>Alertsify — Copy the Trade, Not the Guesswork</title>
+<style>
+  :root {
+    --bg: #06100c;
+    --surface: #0e1f17;
+    --surface-2: #14291f;
+    --line: #1e3a2b;
+    --text: #e7f3ec;
+    --muted: #7fa08f;
+    --accent: #34ff9a;
+    --accent-dim: #1c8f5c;
+    --danger: #ff6b6b;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  h1 {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: clamp(28px, 6vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 18px;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .lede {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 52ch;
+    margin: 0 0 40px;
+  }
+
+  .story {
+    border-left: 2px solid var(--line);
+    padding-left: 18px;
+    margin: 0 0 44px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #cfe3d8;
+  }
+
+  .story p { margin: 0 0 12px; }
+  .story p:last-child { margin-bottom: 0; }
+  .story .kicker {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px 22px 8px;
+    margin-bottom: 40px;
+  }
+
+  .panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+
+  .panel-title {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .panel-date {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .panel-total {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    margin: 6px 0 18px;
+  }
+
+  .trader-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 32px;
+  }
+
+  .trader-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .trader-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1px solid var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .trader-name {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .trader-sub {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .trader-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-label {
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .trade-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    gap: 12px;
+  }
+
+  .trade-name {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .trade-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .trade-pnl {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .panel-foot {
+    font-size: 11px;
+    color: var(--muted);
+    padding: 14px 0 10px;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
+  }
+
+  .cta {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: #052a19;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 18px 24px;
+    border-radius: 8px;
+    letter-spacing: -0.005em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 0 0 rgba(52,255,154,0);
+  }
+
+  .cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(52,255,154,0.18);
+  }
+
+  .cta-sub {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  .cta-block { margin-bottom: 44px; }
+
+  .fine {
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: #4d6459;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta { transition: none; }
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="eyebrow"><span class="dot"></span>ALERTSIFY — COPY TRADING, VERIFIED</div>
+
+  <h1>I don't place these trades.<br><span>I copy them.</span></h1>
+
+  <p class="lede">
+    Every position below was opened and closed by one trader I follow
+    on Alertsify. Their entry becomes my entry, the same second — no
+    analysis on my end, no app to open in time. I just copy.
+  </p>
+
+  <div class="trader-card">
+    <div class="trader-head">
+      <div class="trader-avatar">TQ</div>
+      <div>
+        <div class="trader-name">@thequietcalf</div>
+        <div class="trader-sub">Trader being copied · options, SPY &amp; large-cap</div>
+      </div>
+    </div>
+    <div class="trader-stats">
+      <div class="stat"><span class="stat-num">68%</span><span class="stat-label">Win rate</span></div>
+      <div class="stat"><span class="stat-num">3 yr</span><span class="stat-label">Track record</span></div>
+      <div class="stat"><span class="stat-num">12%</span><span class="stat-label">Max drawdown</span></div>
+    </div>
+  </div>
+
+  <div class="story">
+    <p><span class="kicker">How copying actually works:</span> when
+    @thequietcalf enters, Alertsify mirrors the order into my account in
+    real time. Same strike, same timing, sized to my account.</p>
+    <p><span class="kicker">What I do:</span> nothing, during the trade.
+    I check the result after it closes. That's the entire job.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <span class="panel-title">Daily P&amp;L</span>
+      <span class="panel-date">Tue, Jun 30, 2026</span>
+    </div>
+    <div class="panel-total">+$211.00</div>
+
+    <div class="trade-row">
+      <div>
+        <div class="trade-name">SPY $743C</div>
+        <div class="trade-meta">2x · $1.91 → $2.48 · 9:10am – 9:30am</div>
+      </div>
+      <div class="trade-pnl">+$113</div>
+    </div>
+    <div class="trade-row">
+      <div>
+        <div class="trade-name">TSLA $420C</div>
+        <div class="trade-meta">1x · $2.44 → $3.42 · 8:56am – 9:06am</div>
+      </div>
+      <div class="trade-pnl">+$98</div>
+    </div>
+
+    <div class="panel-foot">2 trades · 2 wins · 0 losses · one real session, shown as-is</div>
+  </div>
+
+  <div class="cta-block">
+    <a class="cta" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65" target="_blank" rel="noopener">
+      Start the free trial →
+    </a>
+    <div class="cta-sub">See the alerts land in real time before you decide anything.</div>
+  </div>
+
+  <div class="fine">
+    Not financial advice. Trading involves substantial risk of loss, and
+    past results — including the log above — do not guarantee future
+    performance. This page contains an affiliate link; I may earn a
+    commission if you subscribe, at no extra cost to you.
+  </div>
+
+</div>
