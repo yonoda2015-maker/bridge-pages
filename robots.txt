@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yonoda2015-maker.github.io/bridge-pages/sitemap.xml
