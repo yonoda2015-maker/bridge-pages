@@ -1,0 +1,131 @@
+<title>The Options Cartel — Signals You Understand, Not Just Follow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07060a; --surface: #100e16; --hairline: rgba(255,255,255,0.08);
+    --text: #ffffff; --muted: #928da5; --muted-2: #5b5768;
+    --accent: #a78bfa; --accent-2: #d4c2ff; --accent-glow: rgba(167,139,250,0.32);
+  }
+  * { box-sizing: border-box; } html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, "Segoe UI", sans-serif; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; font-size: 16px; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  .container { max-width: 1080px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; max-width: 1080px; margin: 0 auto; padding: 24px 24px; }
+  .wordmark { font-size: 15px; font-weight: 800; letter-spacing: -0.01em; }
+  .status-pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; color: var(--accent); padding: 7px 14px; border: 1px solid rgba(167,139,250,0.3); background: rgba(167,139,250,0.08); border-radius: 999px; }
+  .hero { max-width: 1080px; margin: 0 auto; padding: 56px 24px 72px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-top: 32px; gap: 40px; } }
+  .eyebrow { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 24px; }
+  h1 { font-size: 58px; font-weight: 900; line-height: 1.05; letter-spacing: -0.034em; margin: 0 0 24px; }
+  @media (max-width: 860px) { h1 { font-size: 40px; letter-spacing: -0.03em; } }
+  @media (max-width: 600px) { h1 { font-size: 33px; } }
+  h1 .grad { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lede { font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 46ch; margin: 0 0 34px; }
+  .cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%); color: #16091f; font-weight: 800; font-size: 16px; text-decoration: none; padding: 16px 26px; border-radius: 12px; letter-spacing: -0.01em; box-shadow: 0 0 32px rgba(167,139,250,0.28), 0 8px 24px rgba(0,0,0,0.4); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 0 48px rgba(167,139,250,0.42), 0 12px 32px rgba(0,0,0,0.5); }
+  .trust-note { font-size: 13px; color: var(--muted-2); font-weight: 500; }
+  .app-frame { background: var(--surface); border: 1px solid var(--hairline); border-radius: 20px; overflow: hidden; box-shadow: 0 0 60px rgba(167,139,250,0.06), 0 30px 80px -20px rgba(0,0,0,0.6); }
+  .app-chrome { display: flex; align-items: center; gap: 6px; padding: 14px 16px; border-bottom: 1px solid var(--hairline); }
+  .app-dot { width: 9px; height: 9px; border-radius: 50%; } .app-dot.r { background: #ff5f57; } .app-dot.y { background: #febc2e; } .app-dot.g { background: #28c840; }
+  .app-chrome-label { margin-left: 10px; font-size: 11.5px; color: var(--muted-2); font-weight: 500; }
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .stat-cell { padding: 22px 20px; border-right: 1px solid var(--hairline); text-align: center; }
+  .stat-cell:last-child { border-right: none; }
+  .stat-num { font-size: 30px; font-weight: 800; color: var(--accent); display: block; margin-bottom: 4px; text-shadow: 0 0 24px var(--accent-glow); }
+  .stat-label { font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted-2); }
+  .panel-caption { font-size: 13px; color: var(--muted); line-height: 1.6; padding: 18px 20px; border-top: 1px solid var(--hairline); }
+  .panel-caption b { color: var(--accent); font-weight: 700; }
+  .section-pad { padding: 64px 0; border-top: 1px solid var(--hairline); }
+  .section-eyebrow { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-2); font-weight: 700; margin-bottom: 16px; }
+  .section-h2 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 32px; max-width: 20ch; }
+  @media (max-width: 600px) { .section-h2 { font-size: 26px; letter-spacing: -0.01em; } }
+  .split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+  .story p { font-size: 16.5px; line-height: 1.75; color: #c9c4d4; margin: 0 0 20px; }
+  .story p:last-child { margin-bottom: 0; }
+  .story .kicker { color: var(--text); font-weight: 700; }
+  .final-cta-wrap { max-width: 1080px; margin: 0 auto; padding: 72px 40px; border-top: 1px solid var(--hairline); text-align: center; background: radial-gradient(60% 100% at 50% 0%, rgba(167,139,250,0.08), transparent 70%); }
+  .final-cta-wrap h2 { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; margin: 0 0 32px; }
+  @media (max-width: 600px) { .final-cta-wrap h2 { font-size: 28px; } }
+  .fine { max-width: 1080px; margin: 0 auto; padding: 32px 24px 56px; font-size: 11.5px; line-height: 1.7; color: var(--muted-2); border-top: 1px solid var(--hairline); }
+  @media (prefers-reduced-motion: reduce) { .cta { transition: none; } }
+</style>
+
+<div class="topbar">
+  <span class="wordmark">THE OPTIONS CARTEL</span>
+  <span class="status-pill">4.8★ · 481 ratings</span>
+</div>
+
+<div class="hero">
+  <div>
+    <div class="eyebrow">Signals + Education</div>
+    <h1>A signal you don't<br>understand is just<br><span class="grad">a guess with steps.</span></h1>
+    <p class="lede">
+      I followed signal groups for two years without learning why any
+      of the trades worked. The Options Cartel pairs real-time alerts
+      with the market read behind them, so the signal stops being a
+      black box.
+    </p>
+    <div class="cta-row">
+      <a class="cta" href="https://whop.com/the-options-cartel/the-options-cartel?a=greekrummy9a65" target="_blank" rel="noopener">
+        See The Options Cartel →
+      </a>
+      <span class="trust-note">89% five-star · swing &amp; options education</span>
+    </div>
+  </div>
+
+  <div class="app-frame">
+    <div class="app-chrome">
+      <span class="app-dot r"></span><span class="app-dot y"></span><span class="app-dot g"></span>
+      <span class="app-chrome-label mono">whop.com/the-options-cartel</span>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-cell"><span class="stat-num mono">4.8</span><span class="stat-label">Rating / 5</span></div>
+      <div class="stat-cell"><span class="stat-num mono">89%</span><span class="stat-label">Five-star</span></div>
+      <div class="stat-cell"><span class="stat-num mono">481</span><span class="stat-label">Ratings</span></div>
+    </div>
+    <div class="panel-caption">
+      Figures pulled directly from the public Whop listing.
+      <b>I don't run this community</b> — same signup page I used is
+      linked below.
+    </div>
+  </div>
+</div>
+
+<div class="section-pad">
+  <div class="container split">
+    <div>
+      <div class="section-eyebrow">What it actually is</div>
+      <div class="section-h2">Signals with the reasoning attached.</div>
+    </div>
+    <div class="story">
+      <p><span class="kicker">What you get:</span> real-time trade
+      signals, AI-assisted market reads, and swing trading education
+      inside a Discord community — not just a ticker feed.</p>
+      <p><span class="kicker">Why the reasoning matters:</span> a
+      signal you can't explain is a signal you'll abandon the first
+      time it's wrong. Understanding the setup is what let me keep
+      trusting the process through a losing week.</p>
+      <p><span class="kicker">Who this is for:</span> traders who want
+      to eventually trade without the group — not stay dependent on
+      it forever.</p>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta-wrap">
+  <h2>Stop guessing why<br>it worked.</h2>
+  <a class="cta" href="https://whop.com/the-options-cartel/the-options-cartel?a=greekrummy9a65" target="_blank" rel="noopener">
+    See The Options Cartel →
+  </a>
+</div>
+
+<div class="fine">
+  Not financial advice. Trading involves substantial risk of loss.
+  Ratings shown are from the public Whop listing at time of writing
+  and may have changed. This page contains an affiliate link; I may
+  earn a commission if you subscribe, at no extra cost to you.
+</div>

@@ -1,0 +1,200 @@
+<title>Elite Options — Trade the Setup, Not the Emotion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #06070a;
+    --surface: #0e0f14;
+    --hairline: rgba(255,255,255,0.08);
+    --text: #ffffff;
+    --muted: #8a8f9c;
+    --muted-2: #565b68;
+    --accent: #e8b64c;
+    --accent-2: #f4d88a;
+    --accent-glow: rgba(232,182,76,0.3);
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, "Segoe UI", sans-serif;
+    margin: 0; padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+  }
+
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  .container { max-width: 1080px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1080px; margin: 0 auto; padding: 24px 24px;
+  }
+
+  .wordmark { font-size: 15px; font-weight: 800; letter-spacing: -0.01em; }
+
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    padding: 7px 14px; border: 1px solid rgba(232,182,76,0.3);
+    background: rgba(232,182,76,0.08); border-radius: 999px;
+  }
+
+  .hero {
+    max-width: 1080px; margin: 0 auto; padding: 56px 24px 72px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+  }
+
+  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-top: 32px; gap: 40px; } }
+
+  .eyebrow { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 24px; }
+
+  h1 { font-size: 60px; font-weight: 900; line-height: 1.04; letter-spacing: -0.036em; margin: 0 0 24px; }
+  @media (max-width: 860px) { h1 { font-size: 42px; letter-spacing: -0.03em; } }
+  @media (max-width: 600px) { h1 { font-size: 34px; } }
+
+  h1 .grad {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .lede { font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 46ch; margin: 0 0 34px; }
+
+  .cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: #221703; font-weight: 800; font-size: 16px; text-decoration: none;
+    padding: 16px 26px; border-radius: 12px; letter-spacing: -0.01em;
+    box-shadow: 0 0 32px rgba(232,182,76,0.28), 0 8px 24px rgba(0,0,0,0.4);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 0 48px rgba(232,182,76,0.42), 0 12px 32px rgba(0,0,0,0.5); }
+
+  .trust-note { font-size: 13px; color: var(--muted-2); font-weight: 500; }
+
+  .app-frame {
+    background: var(--surface); border: 1px solid var(--hairline); border-radius: 20px;
+    overflow: hidden; box-shadow: 0 0 60px rgba(232,182,76,0.06), 0 30px 80px -20px rgba(0,0,0,0.6);
+  }
+
+  .app-chrome { display: flex; align-items: center; gap: 6px; padding: 14px 16px; border-bottom: 1px solid var(--hairline); }
+  .app-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .app-dot.r { background: #ff5f57; } .app-dot.y { background: #febc2e; } .app-dot.g { background: #28c840; }
+  .app-chrome-label { margin-left: 10px; font-size: 11.5px; color: var(--muted-2); font-weight: 500; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .stat-cell { padding: 22px 20px; border-right: 1px solid var(--hairline); text-align: center; }
+  .stat-cell:last-child { border-right: none; }
+  .stat-num { font-size: 30px; font-weight: 800; color: var(--accent); display: block; margin-bottom: 4px; text-shadow: 0 0 24px var(--accent-glow); }
+  .stat-label { font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted-2); }
+
+  .panel-caption { font-size: 13px; color: var(--muted); line-height: 1.6; padding: 18px 20px; border-top: 1px solid var(--hairline); }
+  .panel-caption b { color: var(--accent); font-weight: 700; }
+
+  .section-pad { padding: 64px 0; border-top: 1px solid var(--hairline); }
+  .section-eyebrow { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-2); font-weight: 700; margin-bottom: 16px; }
+  .section-h2 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin: 0 0 32px; max-width: 20ch; }
+  @media (max-width: 600px) { .section-h2 { font-size: 26px; letter-spacing: -0.01em; } }
+
+  .split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+
+  .story p { font-size: 16.5px; line-height: 1.75; color: #c3ccd4; margin: 0 0 20px; }
+  .story p:last-child { margin-bottom: 0; }
+  .story .kicker { color: var(--text); font-weight: 700; }
+
+  .final-cta-wrap {
+    max-width: 1080px; margin: 0 auto; padding: 72px 40px; border-top: 1px solid var(--hairline);
+    text-align: center; background: radial-gradient(60% 100% at 50% 0%, rgba(232,182,76,0.08), transparent 70%);
+  }
+  .final-cta-wrap h2 { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; margin: 0 0 32px; }
+  @media (max-width: 600px) { .final-cta-wrap h2 { font-size: 28px; } }
+
+  .fine { max-width: 1080px; margin: 0 auto; padding: 32px 24px 56px; font-size: 11.5px; line-height: 1.7; color: var(--muted-2); border-top: 1px solid var(--hairline); }
+
+  @media (prefers-reduced-motion: reduce) { .cta { transition: none; } }
+</style>
+
+<div class="topbar">
+  <span class="wordmark">ELITE OPTIONS</span>
+  <span class="status-pill">4.9★ · 1,372 reviews</span>
+</div>
+
+<div class="hero">
+  <div>
+    <div class="eyebrow">Options Community</div>
+    <h1>The setup was right.<br><span class="grad">You weren't.</span></h1>
+    <p class="lede">
+      Most losing trades I've made weren't bad setups. They were good
+      setups I exited early out of fear, or held too long out of
+      stubbornness. Elite Options is built around the part of trading
+      nobody sells: staying disciplined when the trade is live.
+    </p>
+    <div class="cta-row">
+      <a class="cta" href="https://whop.com/elite-options/elite-options?a=greekrummy9a65" target="_blank" rel="noopener">
+        See Elite Options →
+      </a>
+      <span class="trust-note">1,800+ members · options alerts &amp; mentorship</span>
+    </div>
+  </div>
+
+  <div class="app-frame">
+    <div class="app-chrome">
+      <span class="app-dot r"></span><span class="app-dot y"></span><span class="app-dot g"></span>
+      <span class="app-chrome-label mono">whop.com/elite-options</span>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-cell"><span class="stat-num mono">4.9</span><span class="stat-label">Rating / 5</span></div>
+      <div class="stat-cell"><span class="stat-num mono">1,800+</span><span class="stat-label">Members</span></div>
+      <div class="stat-cell"><span class="stat-num mono">1,372</span><span class="stat-label">Reviews</span></div>
+    </div>
+    <div class="panel-caption">
+      Figures pulled directly from the public Whop listing.
+      <b>I don't run this community</b> — I use it, and I'm pointing you
+      to the same page I signed up on.
+    </div>
+  </div>
+</div>
+
+<div class="section-pad">
+  <div class="container split">
+    <div>
+      <div class="section-eyebrow">What it actually is</div>
+      <div class="section-h2">Alerts, plus the part that keeps you in them.</div>
+    </div>
+    <div class="story">
+      <p><span class="kicker">What you get:</span> multiple trade alerts
+      a week, market summaries before the open, and daily feedback on
+      discipline and patience — not just entries.</p>
+      <p><span class="kicker">Why that second part matters:</span> I
+      can find a good setup on my own most weeks. What I couldn't do
+      alone was sit through the 20 minutes where the trade looked wrong
+      before it looked right.</p>
+      <p><span class="kicker">Who this is for:</span> traders who
+      already know what a good setup looks like, and lose money on the
+      exit, not the entry.</p>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta-wrap">
+  <h2>Trade the plan.<br>Not the panic.</h2>
+  <a class="cta" href="https://whop.com/elite-options/elite-options?a=greekrummy9a65" target="_blank" rel="noopener">
+    See Elite Options →
+  </a>
+</div>
+
+<div class="fine">
+  Not financial advice. Trading involves substantial risk of loss.
+  Member counts and ratings shown are from the public Whop listing at
+  time of writing and may have changed. This page contains an
+  affiliate link; I may earn a commission if you subscribe, at no
+  extra cost to you.
+</div>

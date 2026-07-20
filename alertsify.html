@@ -1,294 +1,409 @@
 <title>Alertsify — Copy the Trade, Not the Guesswork</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #06100c;
-    --surface: #0e1f17;
-    --surface-2: #14291f;
-    --line: #1e3a2b;
-    --text: #e7f3ec;
-    --muted: #7fa08f;
-    --accent: #34ff9a;
-    --accent-dim: #1c8f5c;
-    --danger: #ff6b6b;
+    --bg: #04080c;
+    --bg-1: #0a0f14;
+    --surface: #0c1520;
+    --hairline: rgba(255,255,255,0.08);
+    --text: #ffffff;
+    --muted: #8a98a6;
+    --muted-2: #5a6673;
+    --accent: #00e87a;
+    --accent-2: #7affc0;
+    --accent-glow: rgba(0,232,122,0.35);
   }
 
   * { box-sizing: border-box; }
 
+  html { background: var(--bg); }
+
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, "Segoe UI", sans-serif;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
   }
 
-  .wrap {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
+  .mono {
+    font-family: 'JetBrains Mono', ui-monospace, "SF Mono", Consolas, monospace;
+    font-variant-numeric: tabular-nums;
   }
 
-  .eyebrow {
-    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent-dim);
+  .container { max-width: 1080px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+  .topbar {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px 24px;
   }
 
-  .eyebrow .dot {
+  .wordmark {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 7px 14px;
+    border: 1px solid rgba(0,232,122,0.28);
+    background: rgba(0,232,122,0.08);
+    border-radius: 999px;
+  }
+
+  .status-pill .dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 8px var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+  }
+
+  .hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 24px 72px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 32px; gap: 40px; }
+  }
+
+  .eyebrow {
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 24px;
   }
 
   h1 {
-    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
-    font-size: clamp(28px, 6vw, 40px);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    text-wrap: balance;
-    margin: 0 0 18px;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -0.038em;
+    margin: 0 0 24px;
+    color: var(--text);
   }
 
-  h1 span { color: var(--accent); }
+  @media (max-width: 860px) { h1 { font-size: 44px; letter-spacing: -0.03em; } }
+  @media (max-width: 600px) { h1 { font-size: 36px; } }
+
+  h1 .grad {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 
   .lede {
-    font-size: 16px;
-    line-height: 1.65;
+    font-size: 18px;
+    line-height: 1.6;
     color: var(--muted);
-    max-width: 52ch;
-    margin: 0 0 40px;
+    max-width: 46ch;
+    margin: 0 0 34px;
   }
 
-  .story {
-    border-left: 2px solid var(--line);
-    padding-left: 18px;
-    margin: 0 0 44px;
-    font-size: 15px;
-    line-height: 1.75;
-    color: #cfe3d8;
+  .cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: #04170e;
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 16px 26px;
+    border-radius: 12px;
+    letter-spacing: -0.01em;
+    box-shadow: 0 0 32px rgba(0,232,122,0.28), 0 8px 24px rgba(0,0,0,0.4);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
 
-  .story p { margin: 0 0 12px; }
-  .story p:last-child { margin-bottom: 0; }
-  .story .kicker {
-    color: var(--accent);
-    font-weight: 600;
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 48px rgba(0,232,122,0.42), 0 12px 32px rgba(0,0,0,0.5);
   }
 
-  .panel {
+  .trust-note {
+    font-size: 13px;
+    color: var(--muted-2);
+    font-weight: 500;
+  }
+
+  /* App mockup panel */
+  .app-frame {
     background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 22px 22px 8px;
-    margin-bottom: 40px;
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,232,122,0.06), 0 30px 80px -20px rgba(0,0,0,0.6);
+  }
+
+  .app-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .app-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .app-dot.r { background: #ff5f57; }
+  .app-dot.y { background: #febc2e; }
+  .app-dot.g { background: #28c840; }
+
+  .app-chrome-label {
+    margin-left: 10px;
+    font-size: 11.5px;
+    color: var(--muted-2);
+    font-weight: 500;
   }
 
   .panel-head {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 4px;
+    align-items: center;
+    padding: 18px 20px 4px;
   }
 
   .panel-title {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 12px;
-    letter-spacing: 0.1em;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
+    font-weight: 700;
   }
 
-  .panel-date {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 12px;
-    color: var(--muted);
-  }
+  .panel-date { font-size: 12px; color: var(--muted-2); }
+
+  .panel-total-row { padding: 14px 20px 6px; }
 
   .panel-total {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 34px;
-    font-weight: 700;
+    font-size: 48px;
+    font-weight: 800;
     color: var(--accent);
-    font-variant-numeric: tabular-nums;
-    margin: 6px 0 18px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 30px var(--accent-glow);
   }
 
-  .trader-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 20px 22px;
-    margin-bottom: 32px;
-  }
-
-  .trader-head {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 18px;
-  }
-
-  .trader-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--surface-2);
-    border: 1px solid var(--accent-dim);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .trader-name {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .trader-sub {
-    font-size: 12.5px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-
-  .trader-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .stat-num {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .stat-label {
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
+  .panel-total-label { font-size: 12.5px; color: var(--muted-2); margin-top: 4px; }
 
   .trade-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 0;
-    border-top: 1px solid var(--line);
-    gap: 12px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--hairline);
   }
 
-  .trade-name {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .trade-meta {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-
-  .trade-pnl {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
+  .trade-name { font-size: 14px; font-weight: 700; color: var(--text); }
+  .trade-meta { font-size: 11.5px; color: var(--muted-2); margin-top: 3px; }
+  .trade-pnl { font-size: 15px; font-weight: 800; color: var(--accent); white-space: nowrap; }
 
   .panel-foot {
     font-size: 11px;
-    color: var(--muted);
-    padding: 14px 0 10px;
-    border-top: 1px solid var(--line);
-    margin-top: 4px;
+    color: var(--muted-2);
+    padding: 14px 20px;
+    border-top: 1px solid var(--hairline);
+    background: rgba(255,255,255,0.015);
   }
 
-  .cta {
-    display: block;
-    text-align: center;
-    background: var(--accent);
-    color: #052a19;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    padding: 18px 24px;
-    border-radius: 8px;
-    letter-spacing: -0.005em;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 0 0 rgba(52,255,154,0);
-  }
+  /* Sections */
+  .section-pad { padding: 64px 0; border-top: 1px solid var(--hairline); }
 
-  .cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(52,255,154,0.18);
-  }
-
-  .cta-sub {
-    text-align: center;
+  .section-eyebrow {
     font-size: 12px;
-    color: var(--muted);
-    margin-top: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    font-weight: 700;
+    margin-bottom: 16px;
   }
 
-  .cta-block { margin-bottom: 44px; }
+  .section-h2 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 32px;
+    max-width: 20ch;
+  }
+
+  @media (max-width: 600px) { .section-h2 { font-size: 28px; letter-spacing: -0.01em; } }
+
+  .split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+
+  .story p {
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: #c3ccd4;
+    margin: 0 0 20px;
+  }
+  .story p:last-child { margin-bottom: 0; }
+  .story .kicker { color: var(--text); font-weight: 700; }
+
+  .trader-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    background: var(--surface);
+  }
+
+  .trader-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0,232,122,0.18), rgba(122,255,192,0.1));
+    border: 1px solid rgba(0,232,122,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .trader-name { font-size: 15px; font-weight: 700; color: var(--text); }
+  .trader-sub { font-size: 12.5px; color: var(--muted-2); margin-top: 3px; }
+
+  .final-cta-wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 72px 40px;
+    border-top: 1px solid var(--hairline);
+    text-align: center;
+    background: radial-gradient(60% 100% at 50% 0%, rgba(0,232,122,0.08), transparent 70%);
+  }
+
+  .final-cta-wrap h2 {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin: 0 0 32px;
+  }
+
+  @media (max-width: 600px) { .final-cta-wrap h2 { font-size: 30px; } }
 
   .fine {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 32px 24px 56px;
     font-size: 11.5px;
     line-height: 1.7;
-    color: #4d6459;
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
+    color: var(--muted-2);
+    border-top: 1px solid var(--hairline);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .cta { transition: none; }
-  }
+  @media (prefers-reduced-motion: reduce) { .cta { transition: none; } }
 </style>
 
-<div class="wrap">
+<div class="topbar">
+  <span class="wordmark">ALERTSIFY</span>
+  <span class="status-pill"><span class="dot"></span>Verified trade log</span>
+</div>
 
-  <div class="eyebrow"><span class="dot"></span>ALERTSIFY — COPY TRADING, VERIFIED</div>
+<div class="hero">
+  <div>
+    <div class="eyebrow">Copy Trading</div>
+    <h1>I don't place<br>these trades.<br><span class="grad">I copy them.</span></h1>
+    <p class="lede">
+      Every position on the right was opened and closed by one trader
+      I follow on Alertsify. Their entry becomes my entry, the same
+      second — no analysis on my end, no app to open in time.
+    </p>
+    <div class="cta-row">
+      <a class="cta" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&utm_source=bridge_page&utm_medium=lp&utm_campaign=alertsify" target="_blank" rel="noopener">
+        Start the free trial →
+      </a>
+      <span class="trust-note">See real fills before you decide anything</span>
+    </div>
+  </div>
 
-  <h1>I don't place these trades.<br><span>I copy them.</span></h1>
+  <div class="app-frame">
+    <div class="app-chrome">
+      <span class="app-dot r"></span><span class="app-dot y"></span><span class="app-dot g"></span>
+      <span class="app-chrome-label mono">alertsify.com/dashboard</span>
+    </div>
+    <div class="panel-head">
+      <span class="panel-title">Daily P&amp;L</span>
+      <span class="panel-date mono">Jun 30, 2026</span>
+    </div>
+    <div class="panel-total-row">
+      <div class="panel-total mono">+$211.00</div>
+      <div class="panel-total-label">2 trades · 2 wins · 0 losses</div>
+    </div>
+    <div class="trade-row">
+      <div>
+        <div class="trade-name">SPY $743C</div>
+        <div class="trade-meta mono">2x · $1.91 → $2.48 · 9:10–9:30am</div>
+      </div>
+      <div class="trade-pnl mono">+$113</div>
+    </div>
+    <div class="trade-row">
+      <div>
+        <div class="trade-name">TSLA $420C</div>
+        <div class="trade-meta mono">1x · $2.44 → $3.42 · 8:56–9:06am</div>
+      </div>
+      <div class="trade-pnl mono">+$98</div>
+    </div>
+    <div class="panel-foot">One real session, shown as-is — no cherry-picking.</div>
+  </div>
+</div>
 
-  <p class="lede">
-    Every position below was opened and closed by one trader I follow
-    on Alertsify. Their entry becomes my entry, the same second — no
-    analysis on my end, no app to open in time. I just copy.
-  </p>
+<div class="section-pad">
+  <div class="container split">
+    <div>
+      <div class="section-eyebrow">How it works</div>
+      <div class="section-h2">Nothing to analyze. Nothing to time.</div>
+    </div>
+    <div class="story">
+      <p><span class="kicker">How copying actually works:</span> when
+      @thequietcalf enters, Alertsify mirrors the order into my account in
+      real time. Same strike, same timing, sized to my account.</p>
+      <p><span class="kicker">What I do:</span> nothing, during the trade.
+      I check the result after it closes. That's the entire job.</p>
+      <p><span class="kicker">What I won't do:</span> quote you a win rate
+      or a track record I haven't personally verified. The log above is
+      the only proof I'm willing to stand behind.</p>
+    </div>
+  </div>
+</div>
 
-  <div class="trader-card">
-    <div class="trader-head">
+<div class="section-pad">
+  <div class="container split">
+    <div>
+      <div class="section-eyebrow">Who I copy</div>
+      <div class="section-h2">One trader. Full transparency.</div>
+    </div>
+    <div class="trader-row">
       <div class="trader-avatar">TQ</div>
       <div>
         <div class="trader-name">@thequietcalf</div>
@@ -296,56 +411,18 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div class="story">
-    <p><span class="kicker">How copying actually works:</span> when
-    @thequietcalf enters, Alertsify mirrors the order into my account in
-    real time. Same strike, same timing, sized to my account.</p>
-    <p><span class="kicker">What I do:</span> nothing, during the trade.
-    I check the result after it closes. That's the entire job.</p>
-    <p><span class="kicker">What I won't do:</span> quote you a win rate
-    or a track record I haven't personally verified. The log below is
-    the only proof I'm willing to stand behind — my own sessions, shown
-    as they happened.</p>
-  </div>
+<div class="final-cta-wrap">
+  <h2>Copy the entry.<br>Skip the guesswork.</h2>
+  <a class="cta" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&utm_source=bridge_page&utm_medium=lp&utm_campaign=alertsify" target="_blank" rel="noopener">
+    Start the free trial →
+  </a>
+</div>
 
-  <div class="panel">
-    <div class="panel-head">
-      <span class="panel-title">Daily P&amp;L</span>
-      <span class="panel-date">Tue, Jun 30, 2026</span>
-    </div>
-    <div class="panel-total">+$211.00</div>
-
-    <div class="trade-row">
-      <div>
-        <div class="trade-name">SPY $743C</div>
-        <div class="trade-meta">2x · $1.91 → $2.48 · 9:10am – 9:30am</div>
-      </div>
-      <div class="trade-pnl">+$113</div>
-    </div>
-    <div class="trade-row">
-      <div>
-        <div class="trade-name">TSLA $420C</div>
-        <div class="trade-meta">1x · $2.44 → $3.42 · 8:56am – 9:06am</div>
-      </div>
-      <div class="trade-pnl">+$98</div>
-    </div>
-
-    <div class="panel-foot">2 trades · 2 wins · 0 losses · one real session, shown as-is</div>
-  </div>
-
-  <div class="cta-block">
-    <a class="cta" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65" target="_blank" rel="noopener">
-      Start the free trial →
-    </a>
-    <div class="cta-sub">See the alerts land in real time before you decide anything.</div>
-  </div>
-
-  <div class="fine">
-    Not financial advice. Trading involves substantial risk of loss, and
-    past results — including the log above — do not guarantee future
-    performance. This page contains an affiliate link; I may earn a
-    commission if you subscribe, at no extra cost to you.
-  </div>
-
+<div class="fine">
+  Not financial advice. Trading involves substantial risk of loss, and
+  past results — including the log above — do not guarantee future
+  performance. This page contains an affiliate link; I may earn a
+  commission if you subscribe, at no extra cost to you.
 </div>
