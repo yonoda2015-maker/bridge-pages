@@ -1,0 +1,72 @@
+<!-- meta: The bid-ask spread doesn't care that your chart was right. You pay it going in and you pay it again coming out. -->
+<title>Bid-Ask Spread: The Hidden Cost Eating Small Accounts</title>
+<meta name="description" content="A wide bid-ask spread can turn a correct trade into a loser twice over. Real fill numbers show how spread and slippage quietly drain small accounts.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bid-Ask Spread: The Hidden Cost Eating Small Accounts">
+<meta property="og:description" content="A wide bid-ask spread can turn a correct trade into a loser twice over. Real fill numbers show how spread and slippage quietly drain small accounts.">
+<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/bid-ask-spread-slippage.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bid-Ask Spread: The Hidden Cost Eating Small Accounts">
+<meta name="twitter:description" content="A wide bid-ask spread can turn a correct trade into a loser twice over. Real fill numbers show how spread and slippage quietly drain small accounts.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Bid-Ask Spread: The Hidden Cost Eating Small Accounts", "description": "A wide bid-ask spread can turn a correct trade into a loser twice over. Real fill numbers show how spread and slippage quietly drain small accounts.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-07-21", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/bid-ask-spread-slippage.html"}}</script>
+<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/bid-ask-spread-slippage.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
+         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
+  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
+  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
+       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
+             font-family: Inter, -apple-system, sans-serif; }
+  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
+       font-weight: 700; color: var(--gold); }
+  p { margin: 0 0 22px; }
+  ol { margin: 0 0 22px; padding-left: 24px; }
+  li { margin-bottom: 12px; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
+  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
+  a { color: var(--accent); }
+  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
+              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
+              border-radius: 10px; font-size: 16px; }
+  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
+  .related-list li { margin-bottom: 10px; }
+  .related-list a { font-size: 15px; }
+</style>
+<article>
+<h1>Bid-Ask Spread: The Hidden Cost Eating Small Accounts</h1>
+<div class="byline">Alertsify · copy the trade, not the guesswork</div>
+<p>I bought a call option once where the stock did exactly what I said it would, in the window I said it would, and I still lost money on the trade. Not because my read was wrong. Because of the bid-ask spread — the gap between what buyers were offering and what sellers wanted — and I paid that gap twice, once getting in and once getting out.</p>
+<p>Nobody explains the bid-ask spread to beginners in a way that makes it feel real. It gets one sentence in most guides, something like "the spread is the difference between the bid and ask price," and then the guide moves on to strategy. That sentence is technically correct and completely useless, because it doesn't tell you the spread is a cost you eat on every single trade, coming and going, whether the trade wins or loses.</p>
+<h2>What the bid-ask spread actually is</h2>
+<p>The bid is the highest price a buyer is currently willing to pay for a contract. The ask is the lowest price a seller is currently willing to accept. The gap between those two numbers is the bid-ask spread, and it exists because market makers need to get paid for standing there and taking the other side of your trade, whoever you are and whatever you're trying to do.</p>
+<p>Say a contract shows a bid of $1.20 and an ask of $1.40. That's a twenty-cent spread. If you want in right now, you're buying at $1.40, the ask. If you sold immediately after, without the stock moving at all, you'd sell at $1.20, the bid. You just lost twenty cents a share, two dollars a contract, for doing nothing. The stock didn't need to move against you. The spread did that on its own, in both directions, the moment you crossed it once to get in and once again to get out.</p>
+<p>That's the part that doesn't sink in from a one-sentence definition: the bid-ask spread isn't a fee you pay once. It's baked into both ends of the trade. You cross it to enter, and you cross it again to exit, even on a trade that goes exactly right.</p>
+<h2>Why some contracts have a brutal bid-ask spread and others barely have one</h2>
+<p>SPY options are about as liquid as options get. Huge volume, huge open interest, market makers competing hard for that order flow. A near-the-money SPY call might show a bid of $2.44 and an ask of $2.46. Two cents wide. You barely feel it.</p>
+<p>Now take a thinly traded stock — a smaller-cap name, or a strike far from the current price, or a monthly expiration nobody's trading yet. I had a position last year in a mid-cap industrial stock, ticker aside, where the $60 call showed a bid of $1.10 and an ask of $1.65. That's fifty-five cents wide on a contract worth about a dollar and a third at the midpoint. On SPY that spread would be laughable. On a low-volume name it's normal, because there aren't enough buyers and sellers actively quoting that contract for the price to tighten up.</p>
+<p>The rule holds pretty consistently: less volume and less open interest means a wider bid-ask spread, because market makers widen the gap to protect themselves when they can't offload a position quickly. SPY, QQQ, and the most active large-cap names get tight spreads because the flow never stops. A random small-cap's monthly options, or an option two strikes out of the money on a stock that barely trades, can have a spread eating ten or fifteen percent of the contract's value before the stock has moved a single cent.</p>
+<h2>A trade that looked right and still lost</h2>
+<p>Here's the one that taught me this the hard way. I'd been watching a regional bank stock trading around $34, expecting a move up toward $37 over about two weeks on an earnings setup. I bought the $35 call, three weeks out. Quoted bid was $1.05, ask was $1.45. Midpoint, the number most chart tools and P&L calculators quietly assume you got, was $1.25.</p>
+<p>I didn't get $1.25. I got filled at $1.40, fifteen cents above the mid, because that's close to where the ask actually was and the market maker had no reason to give me a better price than it had to. On one contract that's fifteen dollars gone before the stock even opened the next morning.</p>
+<p>The stock did move. It went from $34 to just over $36 in nine trading days, close to what I'd expected. My call's midpoint climbed to roughly $2.15. On paper that looks like a solid win — $1.25 to $2.15 is a 72% gain if you're reading it off the mid like most people do.</p>
+<p>I didn't sell at the mid. The bid-ask spread on the way out was wider than it had been on the way in, because volume had thinned again after the initial earnings excitement — bid $1.85, ask $2.30. I sold into the bid and got $1.85. So the real trade was: paid $1.40, sold $1.85. A forty-five dollar gain on one contract, not the ninety dollars the midpoint math suggested. The spread alone erased half of what the chart said I'd made — and that's the good outcome, where the stock actually cooperated. On a trade where the stock barely moves, the same spread turns a breakeven read into a straight loss, because you're down the entry-to-exit gap before price action ever gets a vote.</p>
+<h2>Bid-ask spread and slippage are not the same thing</h2>
+<p>People use spread and slippage interchangeably and they're related but not identical. The bid-ask spread is a quoted, static number — you can see the bid and the ask sitting right there on the screen before you click anything. It's a property of the contract itself: how liquid it is, how many market participants are quoting it right now.</p>
+<p>Slippage is what happens to your own order on top of that. It's the extra cost from the market moving between when you decided to trade and when your order actually filled, or from your order itself being big enough to move the price. A twenty-cent spread is just a twenty-cent spread. Slippage shows up when you hesitate for ten seconds during a fast move and the ask you were looking at is gone, replaced by a worse one, or when you chase a breakout and end up paying more than the spread alone would have cost you because the whole quote shifted while you were still deciding.</p>
+<p>My earnings trade above ate spread on both ends — that part was going to happen regardless of how fast I clicked. A separate trade the same month cost me slippage specifically: I saw a setup trigger, hesitated for maybe fifteen seconds deciding whether to chase it, and by the time I entered, the stock had already ticked up enough that the option's ask had moved thirty cents higher than what I'd seen when I first looked at the chain. That thirty cents wasn't the spread. The spread that day was normal. That thirty cents was me, standing still while the market didn't.</p>
+<h2>Why fast execution fixes the slippage half, not the spread half</h2>
+<p>This is the distinction that matters if you're trying to actually fix the problem instead of just naming it. The bid-ask spread on a given contract is a liquidity fact. It doesn't shrink because you trade faster or because a tool executes your order instead of your finger doing it. A fifty-cent-wide spread on a low-volume contract is fifty cents wide whether a human clicks the button or a system does. Nothing about execution speed changes how many market makers are quoting that option, or how wide the bid-ask spread sits on a contract nobody's trading.</p>
+<p>Slippage is different, because slippage is mostly a function of the gap between decision and action. That gap is exactly where I used to lose money that had nothing to do with the spread on the screen. I'd see an entry signal, sit on it while I second-guessed myself, watch the price run, and then either chase it at a worse fill or miss it entirely and re-enter later at a worse price still trying to "catch up" to where I thought I should already be. None of that is the contract being illiquid. That's me adding my own delay on top of a spread that was already going to cost something.</p>
+<p>That's the actual reason I moved to Alertsify. My account copies the entries and exits of a trader I follow, placed the moment the signal fires, without me sitting there deciding whether to click. It didn't make SPY spreads narrower and it didn't make a thinly traded small-cap option suddenly liquid — nothing does that. What it removed was the fifteen seconds of hesitation that used to turn an already-imperfect fill into a worse one, and the habit of chasing a price I'd already missed. Spread is a cost of the contract. Slippage, for me, was mostly a cost of me.</p>
+<h2>What this actually means for your trades</h2>
+<p>Check the bid-ask spread before you enter, not after. If the bid-ask spread on a contract is more than five or ten percent of the contract's price, you're starting the trade already behind, and you need a bigger move just to get back to breakeven on both the entry and the exit. SPY and other high-volume names give you room to be a little wrong on timing because the spread barely costs you anything. A contract with a wide bid-ask spread on a low-volume name demands you be right by a wider margin, because the spread eats into your edge before the stock does anything at all.</p>
+<p>None of this makes options safer, and copying someone else's execution doesn't erase a bad contract choice. It only removes one piece of the bid-ask spread problem — the part where your own hesitation makes a normal fill into an expensive one.</p>
+<p>These days my account copies a trader I follow through Alertsify instead of me placing entries myself — it doesn't touch the bid-ask spread on any contract, but it took the hesitation out of the moment a signal fires, which is where slippage used to quietly add itself on top of a cost I was already paying. If you want to see what that actually looks like:</p>
+<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=bid_ask_spread" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
+<p class="note">Disclosure: that&#x27;s an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There&#x27;s a free trial if you want to look around first.</p>
+</article>
