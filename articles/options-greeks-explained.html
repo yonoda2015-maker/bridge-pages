@@ -1,0 +1,72 @@
+<title>Options Greeks Explained: Delta, Theta, Gamma in Plain Terms</title>
+<meta name="description" content="Options Greeks explained the way I wish someone had explained them to me: Delta, Theta, and Gamma as numbers you check before entering, not textbook theory.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Options Greeks Explained: Delta, Theta, Gamma in Plain Terms">
+<meta property="og:description" content="Options Greeks explained the way I wish someone had explained them to me: Delta, Theta, and Gamma as numbers you check before entering, not textbook theory.">
+<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Options Greeks Explained: Delta, Theta, Gamma in Plain Terms">
+<meta name="twitter:description" content="Options Greeks explained the way I wish someone had explained them to me: Delta, Theta, and Gamma as numbers you check before entering, not textbook theory.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Options Greeks Explained: Delta, Theta, Gamma in Plain Terms", "description": "Options Greeks explained the way I wish someone had explained them to me: Delta, Theta, and Gamma as numbers you check before entering, not textbook theory.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-07-25", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html"}}</script>
+<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
+         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
+  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
+  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
+       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
+             font-family: Inter, -apple-system, sans-serif; }
+  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
+       font-weight: 700; color: var(--gold); }
+  p { margin: 0 0 22px; }
+  ol { margin: 0 0 22px; padding-left: 24px; }
+  li { margin-bottom: 12px; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
+  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
+  a { color: var(--accent); }
+  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
+              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
+              border-radius: 10px; font-size: 16px; }
+  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
+  .related-list li { margin-bottom: 10px; }
+  .related-list a { font-size: 15px; }
+</style>
+<!-- meta: primary_kw=options Greeks explained; account=@Trusync11511 (Alertsify); word_target=1500-2500 -->
+<article>
+<h1>Options Greeks Explained: Delta, Theta, Gamma in Plain Terms</h1>
+<div class="byline">Alertsify · copy the trade, not the guesswork</div>
+<p>Options Greeks explained without the textbook definitions: Delta, Theta, and Gamma are three numbers sitting right next to the price of every contract you look at, and for the first two years I traded, I never once looked at them. I looked at the premium. I looked at the chart. I ignored the row of small numbers next to the bid and ask because they looked like something for quants, not for someone trying to catch a SPY move before Friday.</p>
+<p>That's backwards. The premium tells you what a contract costs. The Greeks tell you what it's going to do to your account while you hold it. I found that out the expensive way, and I'm going to walk through the three that matter most, plus the one that matters a little, using an actual options chain moment instead of formulas.</p>
+<h2>Delta: how much the option actually moves</h2>
+<p>Delta tells you roughly how many cents an option's price changes for every $1 move in the underlying stock. A call with a Delta of 0.40 gains about 40 cents when the stock goes up a dollar, and loses about 40 cents when it drops a dollar. That's the whole concept. It's not a mystery number — it's a conversion rate between "the stock moved" and "my contract moved."</p>
+<p>Delta ranges from 0 to 1.00 for calls and 0 to -1.00 for puts. A deep in-the-money call can carry a Delta near 0.90, meaning it trades almost dollar-for-dollar with the stock. A far out-of-the-money call might carry a Delta of 0.10, barely reacting at all. Most of the contracts beginners buy sit somewhere in the middle, Delta 0.25 to 0.45, which is exactly where the option feels cheap and the payoff feels exciting, and exactly where a lot of that excitement gets eaten by the other two Greeks.</p>
+<p>There's a second use for Delta that most beginners never get told: it doubles as a rough probability the option expires in the money. A 0.30 Delta call is giving you, roughly, a 30% shot of finishing above the strike by expiration. That's not an exact statistic and I don't treat it like one, but it's a fast gut-check. If you're buying a 0.15 Delta call because it's cheap, you're buying something the market thinks has about a 15% chance of paying off. Know that going in, not after.</p>
+<h2>Theta: the daily bill, as an actual number</h2>
+<p>I've written before about time decay as a concept — the melting ice cube, the bleed toward zero. Theta is that concept turned into a specific dollar figure you can look up before you ever place the trade. If a contract shows Theta of -0.05, that option is losing roughly 5 cents a day from time passing alone, no matter what the stock does. Times 100 shares per contract, that's $5 a day walking out of your position while you sleep.</p>
+<p>This is the number I check now before entering anything with fewer than five days left. Not "time decay is a risk," which is true but useless as a decision tool. The actual figure: this contract costs me $5 a day, $9 a day, $14 a day, whatever it says. Multiply that by how many days you expect to hold it, and you get a real number to weigh against how much room the stock needs to move to cover that cost. A contract with Theta of -0.14 needs a real move in three days just to break even on time decay alone, before it makes you a dollar.</p>
+<h2>Gamma: why the last days are so violent</h2>
+<p>Gamma measures how fast Delta itself is changing. Delta isn't fixed — it moves as the stock price moves and as expiration approaches, and Gamma is the speed of that movement. A high Gamma position means Delta can swing hard in a short window, which means your risk profile can change from moderate to extreme without you doing anything at all.</p>
+<p>Gamma is highest for contracts that are at-the-money and close to expiration. That combination — strike near the current price, very little time left — is exactly the environment where Delta stops behaving like a steady conversion rate and starts behaving like a light switch. A contract with a Delta of 0.45 in the morning can carry a Delta of 0.80 by early afternoon if the stock drifts toward the strike, or fall to 0.15 if it drifts away, all inside a few hours, purely from Gamma doing its job. That's the mechanical reason same-day contracts move the way they do — the same Gamma effect that makes 0DTE trading so unforgiving is just Gamma at its most extreme version, magnified because there's no time left to smooth it out.</p>
+<p>Vega is the fourth Greek worth knowing, and I'll keep it short because it matters less for most of what a beginner trades day to day. Vega measures how sensitive an option's price is to a change in implied volatility — how much the premium moves if the market suddenly expects bigger swings, independent of the stock actually moving. It matters most around earnings and major news events, where implied volatility can spike or collapse overnight. For a normal Tuesday SPY trade, Vega is background noise. For a trade held into an earnings report, it can move the price more than the stock itself does.</p>
+<h2>The options chain moment that actually taught me this</h2>
+<p>SPY was trading at $447 on a Thursday morning, eleven days out from that Friday's monthly expiration, and I was looking at the $450 call. The premium was $2.10. Delta on that contract read 0.36. Theta read -0.07. Gamma read 0.04.</p>
+<p>Looking only at the price, $2.10 looked like a reasonable, unremarkable number. It told me nothing about what would happen to my account over the next few days. The three Greeks together told a much more specific story. Delta of 0.36 meant SPY had roughly a one-in-three shot of finishing above $450, and every dollar SPY moved would only move my contract about 36 cents — I needed a real move, not a small one, to make meaningful money. Theta of -0.07 meant I was paying $7 a day in time decay whether SPY moved or not, which over the eleven remaining days added up to real money if SPY just sat still. Gamma of 0.04 meant that Delta wasn't going to stay at 0.36 — as SPY approached $450, or as the eleven days shrank toward zero, that Delta was going to accelerate, for better or worse, faster than the calm price action on the daily chart suggested.</p>
+<p>Put together, those three numbers said something the $2.10 price alone never would have: this is a contract that costs $7 a day to hold, needs SPY to actually move to pay that bill back, and is going to get more volatile, not less, the longer I sit in it near that strike. SPY drifted to $449.10 over the next four days — a real move, just not a big one — and Theta had already taken $28 out of the position by the time it got there. The stock direction wasn't wrong. The Greeks had already told me the size of the bill I'd be paying while I waited to find out.</p>
+<h2>Why I check these three before I check the chart now</h2>
+<p>Early on, my process was backwards. I'd find a setup I liked on the chart, pick a strike that felt affordable, and only glance at Delta or Theta after the trade was already open and losing money in a way I didn't understand. Now the order is reversed. I look at Delta to know how much the contract will actually respond to the move I'm expecting. I look at Theta to know the daily cost of being early. I look at Gamma to know whether that risk profile is stable or about to accelerate. The chart tells me what I think the stock will do. The Greeks tell me what happens to my money while I wait to find out if I'm right.</p>
+<p>None of that removes the part where I still had to sit there and decide, in real time, whether to hold through a flat afternoon or cut the position when Theta was clearly winning. That decision-making under pressure was never really about understanding Delta or Gamma correctly. I understood the math fine by year three. What I was bad at was acting on it without hesitation once the numbers said what they said.</p>
+<h2>Why I stopped making that decision myself</h2>
+<p>That's the actual reason I use Alertsify now. My account copies the entries and exits of a trader I follow, so when a position's Theta bill stops making sense against the move that's actually happening, the exit gets placed the way it was planned instead of me negotiating with myself about whether "it still has room." I still check Delta before I'd even consider a trade. I still look at Theta and do the daily-cost math in my head out of habit. I still watch Gamma tighten up as expiration gets close. Understanding the Greeks was never the piece that was missing. Acting on what they were telling me, consistently, without my own hesitation getting in the way, was the piece that was missing.</p>
+<h2>The honest limits here</h2>
+<p>Knowing Delta, Theta, and Gamma doesn't make you profitable, and it doesn't turn a bad trade into a good one. These numbers describe risk, they don't remove it — a high-Delta contract can still go to zero, and a low-Theta position can still bleed you out over enough days. Options pricing models generate these Greeks from assumptions that can be wrong, especially around news events, so treat them as a real-time estimate, not a guarantee. A copy-execution tool doesn't fix a bad read on Delta or a misjudged Theta bill either. It only removes the part where hesitation costs you the exit you already knew you should take.</p>
+<h2>Where that leaves me</h2>
+<p>I still pull up the Greeks on every contract before I so much as think about size. Delta tells me how much the trade will actually move. Theta tells me what it costs to be early. Gamma tells me how fast that whole picture can change near the strike and near expiration. The $450 call taught me that the price alone was never the full story — it was the story with the three most important chapters missing.</p>
+<p>These days my account copies a trader I follow through Alertsify instead of me placing entries myself — it didn't change what the Greeks say about a contract, it changed whether I actually act on what they're telling me without getting in my own way. If you want to see what that actually looks like:</p>
+<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=options_greeks" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
+<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
+</article>
