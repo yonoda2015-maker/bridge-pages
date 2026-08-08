@@ -1,0 +1,88 @@
+<title>What Is a Strike Price? How to Actually Pick One</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G331W5FGRC');
+</script>
+
+<meta name="description" content="What is a strike price? The fixed price your option locks in, and the real question beginners skip: how to pick one. Real numbers, one worked example.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Is a Strike Price? How to Actually Pick One">
+<meta property="og:description" content="What is a strike price? The fixed price your option locks in, and the real question beginners skip: how to pick one. Real numbers, one worked example.">
+<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/what-is-a-strike-price.html">
+<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:title" content="What Is a Strike Price? How to Actually Pick One">
+<meta name="twitter:description" content="What is a strike price? The fixed price your option locks in, and the real question beginners skip: how to pick one. Real numbers, one worked example.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What Is a Strike Price? How to Actually Pick One", "description": "What is a strike price? The fixed price your option locks in, and the real question beginners skip: how to pick one. Real numbers, one worked example.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-09", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/what-is-a-strike-price.html"}}</script>
+<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/what-is-a-strike-price.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
+<style>
+  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
+         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
+  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
+  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
+       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
+             font-family: Inter, -apple-system, sans-serif; }
+  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
+       font-weight: 700; color: var(--gold); }
+  p { margin: 0 0 22px; }
+  ol { margin: 0 0 22px; padding-left: 24px; }
+  li { margin-bottom: 12px; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
+  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
+  a { color: var(--accent); }
+  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
+              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
+              border-radius: 10px; font-size: 16px; }
+  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
+  .related-list li { margin-bottom: 10px; }
+  .related-list a { font-size: 15px; }
+</style>
+<!-- meta: primary_kw=what is a strike price; account=@Trusync11511 (Alertsify); word_target=1500-2200 -->
+<article>
+<h1>What Is a Strike Price? How to Actually Pick One</h1>
+<div class="byline">Alertsify · copy the trade, not the guesswork · <span class="pub-date">August 9, 2026</span> · <span class="category-tag">Options Mechanics</span></div>
+<p>What is a strike price? It's the fixed price written into an options contract at the moment it's created — the number that decides whether you're allowed to buy or sell the underlying stock, and at what cost, no matter where the stock actually trades later. That part is arithmetic and most explainers stop right there. The part they skip is the part that actually costs beginners money: how do you pick which strike to buy, out of the dozen or more listed on the same expiration date?</p>
+<p>I bought my first contract without ever thinking about that second question. I saw a strike that was cheap, bought ten of them because ten felt like more than two, and watched all ten expire worthless a week later. The stock moved in the direction I called. It just didn't move far enough to reach the strike I'd picked. Nobody had told me that was the actual game.</p>
+<h2>The definition, with a real number attached</h2>
+<p>A strike price is set when the contract is listed and never moves for the life of that contract. For a call option, the strike is the price you get to buy the stock at, regardless of where it's actually trading when you exercise. For a put option, it's the price you get to sell at. Everything else about the option — the premium, the Greeks, whether it's worth exercising — gets measured against that one fixed number.</p>
+<p>Say MSFT is trading at $412 and you buy a call with a $420 strike, expiring in three weeks. That $420 is locked. If MSFT closes at $431 on expiration day, your call lets you buy shares at $420 that are worth $431 — an $11 gain per share, $1,100 per contract before subtracting what you paid for it. If MSFT closes at $416, your call is worthless, because nobody exercises the right to buy at $420 when the stock is available for less on the open market. The strike didn't change either way. What changed was where the stock ended up relative to it.</p>
+<h2>The three positions a strike can sit in</h2>
+<p>Every strike on a chain sits in one of three positions relative to the current stock price, and each one changes both what you pay and your odds of the option paying off.</p>
+<p><strong>In-the-money</strong> means the strike is already past the finish line. A call with a strike below the current stock price is in-the-money, and so is a put with a strike above it. These options cost the most, because part of that cost is real value already sitting in the contract, not a bet on the future. They also carry the best odds of expiring profitably, since the stock doesn't have to move anywhere for the option to already be worth something.</p>
+<p><strong>At-the-money</strong> means the strike sits right at, or almost exactly at, the current stock price. There's no built-in value yet, but the odds of the option finishing in-the-money are close to a coin flip, since it only takes a small move in either direction to tip it one way or the other. Premiums here are lower than in-the-money but still meaningful, because the market knows a small move gets this contract paid.</p>
+<p><strong>Out-of-the-money</strong> means the strike is on the wrong side of the current price — above it for a call, below it for a put. These are the cheapest contracts on the chain, and that cheapness is exactly what draws beginners in. But cheap here means the market is pricing in low odds, not a discount. An out-of-the-money strike needs the stock to make a real move just to catch up to where the strike sits, then keep moving to turn a profit.</p>
+<h2>The actual trade-off: cheaper strike, worse odds</h2>
+<p>This is the piece most explainers skip, and it's the one that matters. A strike closer to the current stock price costs more upfront, but the stock doesn't have to travel far for that option to pay off — a higher probability of profit, bought with a higher price tag. A strike further from the current price costs less upfront, but it needs a bigger move to reach the same outcome — a lower price tag, bought with lower odds.</p>
+<p>The beginner mistake, the one I made, is picking the strike that's furthest out and cheapest because it feels like more leverage for less money. On paper, ten contracts at $0.40 look like more firepower than two contracts at $2.00 for the same total cash outlay. What that thinking skips is that the odds on the $0.40 strike are proportionally worse — you're not getting five times the leverage for free, you're getting five times the contracts on a bet that's priced to fail five times as often. The market already did that math before you saw the price.</p>
+<h2>Comparing two strikes on the same trade</h2>
+<p>Here's the comparison that made this click for me. MSFT at $412, both calls expiring the same Friday, three weeks out.</p>
+<p>The $415 call — five dollars past the current price, barely out-of-the-money — was trading at $9.40. Delta on that contract read about 0.52, meaning roughly a coin-flip shot of finishing in-the-money, and every dollar MSFT moved would move this contract close to fifty cents. For MSFT to turn this into a winner, it needed to climb past $424.40 by expiration to clear the strike and the premium paid.</p>
+<p>The $440 call — twenty-eight dollars out, deep out-of-the-money — was trading at $1.15. Delta read about 0.14, meaning something closer to a one-in-seven shot of finishing in-the-money. For MSFT to turn this into a winner, it needed to climb past $441.15, a move more than double the size the $415 strike required, inside the same three weeks.</p>
+<p>Same stock, same expiration, same three weeks on the clock. One strike asked for a five-percent move and paid you back well over half the time historically for a move that size. The other asked for close to a seven-percent move in three weeks and paid off on a much smaller slice of outcomes. The $440 call wasn't secretly better leverage. It was a smaller bet on a bigger, less likely move, priced accordingly by everyone else trading that chain.</p>
+<h2>How I actually pick a strike now</h2>
+<p>I stopped asking "what's the cheapest contract I can buy" and started asking "how far do I actually think this stock moves, and by when." If I think MSFT clears $424 inside three weeks, the $415 strike is a real trade on that thesis. If I think it only reaches $441 in some best-case scenario I'm not confident in, buying the $440 strike isn't a smarter version of the same trade — it's a different, much less likely bet wearing the same ticker.</p>
+<p>I also check where Delta sits before I size a position, because Delta doubles as a rough probability read. A strike with a 0.50 Delta is telling you the market prices roughly even odds. A strike with a 0.15 Delta is telling you the market prices long odds, no matter how good the story sounds for why this time is different. That number doesn't lie the way a narrative can.</p>
+<h2>Where I stopped trusting myself with the decision</h2>
+<p>Knowing how to read a strike chain was never the piece that cost me money the longest. I understood in-the-money versus out-of-the-money well before I stopped losing on it. What kept happening was the moment of actually clicking buy — reaching for the cheap, far-out strike anyway because ten contracts felt better than two, even after I'd already done the math that said otherwise.</p>
+<p>That's the real reason my account runs through Alertsify now. The strike selection and position sizing get planned and executed the way they were planned, copying a trader I follow, instead of me negotiating with myself in the moment between opening the chain and hitting the buy button. I still look at Delta before anything else. I still do the distance-to-strike math in my head out of habit. What changed is whether I act on it without talking myself into the cheaper, longer-odds contract because it felt like a better deal.</p>
+<h2>The honest limits here</h2>
+<p>None of this turns strike selection into a guarantee. An at-the-money strike with even odds can still expire worthless if the stock drifts the wrong way in the final days. A deep in-the-money strike can still lose money if the stock drops hard enough to erase the cushion it started with. Delta is a rough, real-time estimate built on current market pricing, not a fixed statistic, and it shifts as the stock moves and as expiration approaches. Picking a smarter strike reduces how badly the odds are stacked against you — it doesn't remove the odds. A copy-execution tool doesn't fix a bad read on where a stock is headed either. It only removes the part where second-guessing costs you the trade you already planned.</p>
+<h2>Where that leaves me</h2>
+<p>What is a strike price, in the end, is a fixed number that decides the terms of the bet. Which strike to buy is the actual decision, and it comes down to how far you think the stock moves against how much you're willing to pay for better odds versus a lower price tag. The $415 call and the $440 call were never the same trade wearing different price stickers. One was a coin-flip bet on a five-percent move. The other was a long shot on nearly double that, dressed up as a bargain.</p>
+<p>These days my account copies a trader I follow through Alertsify instead of me picking the strike and pulling the trigger myself — it didn't change how I read a chain, it changed whether I act on that read without talking myself into the cheaper, longer-odds contract. If you want to see what that actually looks like:</p>
+<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=strike_price" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
+<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
+<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
+</article>
