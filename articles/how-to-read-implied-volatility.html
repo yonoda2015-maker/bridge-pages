@@ -1,0 +1,93 @@
+<title>How to Read Implied Volatility (IV) in Options</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G331W5FGRC');
+</script>
+
+<meta name="description" content="How to read implied volatility: what IV rank and percentile actually mean, why premium inflates before earnings, and how IV crush works, with real numbers.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Read Implied Volatility (IV) in Options">
+<meta property="og:description" content="How to read implied volatility: what IV rank and percentile actually mean, why premium inflates before earnings, and how IV crush works, with real numbers.">
+<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-read-implied-volatility.html">
+<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:title" content="How to Read Implied Volatility (IV) in Options">
+<meta name="twitter:description" content="How to read implied volatility: what IV rank and percentile actually mean, why premium inflates before earnings, and how IV crush works, with real numbers.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to Read Implied Volatility (IV) in Options", "description": "How to read implied volatility: what IV rank and percentile actually mean, why premium inflates before earnings, and how IV crush works, with real numbers.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-08", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-read-implied-volatility.html"}}</script>
+<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-read-implied-volatility.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
+<style>
+  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
+         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
+  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
+  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
+       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
+             font-family: Inter, -apple-system, sans-serif; }
+  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
+       font-weight: 700; color: var(--gold); }
+  p { margin: 0 0 22px; }
+  ol { margin: 0 0 22px; padding-left: 24px; }
+  li { margin-bottom: 12px; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
+  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
+  a { color: var(--accent); }
+  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
+              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
+              border-radius: 10px; font-size: 16px; }
+  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
+  .related-list li { margin-bottom: 10px; }
+  .related-list a { font-size: 15px; }
+</style>
+<!-- meta: primary_kw=how to read implied volatility; account=@Trusync11511 (Alertsify); word_target=1200-2200 -->
+<article>
+<h1>How to Read Implied Volatility (IV) in Options</h1>
+<div class="byline">Alertsify · copy the trade, not the guesswork · <span class="pub-date">August 8, 2026</span> · <span class="category-tag">Options Mechanics</span></div>
+<p>Implied volatility is the number that decides whether an option is expensive or cheap, and for most of my first year I had no idea it existed. I looked at premium. I looked at strike price. I never asked why two contracts with the same strike, same expiration, same underlying stock could cost wildly different amounts depending on the week I bought them. IV is the answer to that question, and once you can read it, a lot of confusing losses stop being confusing.</p>
+<p>Here's the short version before the long one: implied volatility is the market's guess, expressed as a percentage, of how much a stock is going to move before the option expires. It doesn't predict direction. It only prices in the size of the expected move. When IV is high, options cost more, because the market is pricing in a bigger possible swing. When IV is low, options cost less, because the market expects the stock to sit still. Everything else in this article is just that idea applied to real numbers.</p>
+<h2>What implied volatility actually measures</h2>
+<p>IV is baked into the options pricing model the same way Delta and Theta are — it's not something you calculate by hand, it's a number your broker's platform shows you next to every contract, usually as a percentage. A stock with 25% IV is being priced as if it might move about 25% over the next year, annualized and expressed with one standard deviation of confidence. A stock with 80% IV is being priced for a much wilder ride. Same stock, same strike, same expiration — if IV doubles, the premium on that contract goes up even if the stock price hasn't moved at all.</p>
+<p>That last part is the piece that trips people up. You can be completely right about direction and still lose money on an option, because you bought it when IV was high and it fell back down before the stock made its move. The stock did what you thought. The option still lost value. That's not a contradiction — it's IV doing exactly what it's supposed to do, deflating once the uncertainty that inflated it goes away.</p>
+<h2>IV rank and IV percentile: the numbers that actually matter</h2>
+<p>A raw IV number by itself doesn't tell you much. 40% IV sounds high until you find out that same stock has traded between 30% and 90% IV over the past year — suddenly 40% is on the cheap end for that name. This is why IV rank and IV percentile exist. They don't tell you what IV is. They tell you where today's IV sits relative to where it's been.</p>
+<p>IV rank compares today's IV to the highest and lowest IV readings over the past year, on a 0 to 100 scale. An IV rank of 80 means current IV is sitting near the top of its 52-week range. An IV rank of 10 means it's near the bottom. IV percentile is a close cousin — instead of just the high and low, it counts what percentage of trading days in the past year had a lower IV than today. Both numbers answer the same practical question in slightly different ways: is volatility expensive or cheap right now, for this specific stock, relative to its own history.</p>
+<p>The reason this matters for entries is simple. Buying options when IV rank is high means you're paying a premium for volatility that's already elevated, and elevated IV tends to mean-revert — it comes back down, and when it does, it drags your option's value down with it even if the stock cooperates. Selling options when IV rank is high is the other side of that same trade, and it's why so many premium-selling strategies specifically wait for IV rank above 50 before entering. Buying options when IV rank is low means you're getting in before volatility gets priced in, which is a better spot to buy from if you expect a move coming.</p>
+<h2>Why premium inflates before an event</h2>
+<p>The clearest place to watch IV move is around a scheduled event where the outcome is genuinely unknown — earnings is the obvious one, but it also happens around Fed announcements, FDA decisions, and any date where a company is about to tell the market something it doesn't already know. In the days leading up to that date, IV climbs steadily, even though the stock itself might be sitting flat. Nothing has happened yet. The market is simply pricing in the fact that something big is about to happen, and it doesn't know which direction.</p>
+<p>This is where a lot of people get hurt without realizing why. They see a stock coiled up before earnings, buy a call or a put expecting a big move, and price the trade off the stock chart instead of off IV. The stock chart doesn't show you that you're paying a volatility premium that's going to evaporate within hours of the earnings print, regardless of whether your direction was right.</p>
+<h2>NVDA earnings: the trade that showed me IV crush firsthand</h2>
+<p>NVDA was trading at $118 the Monday before its quarterly earnings report, due out after the close that Wednesday. I bought the $122 calls, five contracts, two days out from earnings. Premium was $4.80 per contract, total cost $2,400. IV on that contract read 68% at entry — high, because the market already knew earnings was coming and had been bidding volatility up all week. IV rank on the stock that day was 91, near the top of its yearly range. I noted it, didn't think much of it, and held through the report.</p>
+<p>NVDA beat on both revenue and guidance. The stock gapped up to $126 the next morning — a real, decent move, more than four points, in my favor, on a call I owned. I checked the position expecting a clean win. The $122 calls were quoted at $3.60. Down more than a dollar a contract, down $600 on the position, on a stock that moved exactly the direction I paid for.</p>
+<p>IV had collapsed from 68% to 24% overnight. The uncertainty that inflated the premium was gone the second the earnings numbers hit the tape, and IV fell off a cliff the way it always does once the unknown becomes known — that's IV crush, and it happens on every single earnings report, win or lose, because the event that IV was pricing in has now occurred. My calls gained a little value from the stock moving up and lost a lot more value from IV collapsing, and the second effect was bigger than the first. I sold the next day for $3.20, total proceeds $1,600, an $800 loss on a trade where I called the direction correctly.</p>
+<p>The lesson wasn't "don't trade earnings." It was that IV rank of 91 should have told me, before I ever placed the trade, that I was paying a volatility premium that had almost nowhere to go but down, and that the stock would need an enormous move just to overcome that crush, not just a decent one. A four-point gap on a $118 stock is a good outcome by most standards. It still wasn't enough to survive 44 points of IV collapsing out of the contract in under 24 hours.</p>
+<h2>How to actually use IV before you place a trade</h2>
+<p>Check IV rank or IV percentile before checking the stock chart, not after. If IV rank is above 70 and there's a known event coming — earnings, an FDA date, a Fed meeting — assume a large chunk of any premium you pay is going to evaporate once that event passes, regardless of direction. That doesn't mean never trade it. It means size the position knowing IV crush is working against you the moment the event resolves, and that you need a bigger move than usual just to break even.</p>
+<p>If IV rank is low and you expect a move — a catalyst the market hasn't priced in yet, a setup building quietly — that's a better entry from a volatility standpoint, because you're not paying a rich premium that's about to get repriced downward. The stock still has to move for you to make money. But you're not fighting IV on top of that.</p>
+<p>Vega is the Greek that measures exactly how much a contract's price responds to a change in IV, and it's worth checking directly on any position you plan to hold into a volatility event — a high Vega number means the IV crush effect on that specific contract is going to be larger, not smaller, than it looks from the IV percentage alone.</p>
+<h2>Where this leaves me</h2>
+<p>I check IV rank now before I check almost anything else on a contract, because it answers a question the stock chart can't: am I paying a fair price for this option, or am I paying for volatility that's already priced in and about to come back out. NVDA at $122 taught me that being right about direction isn't the same as being right about the trade — IV crush doesn't care that the stock moved my way, it only cares that the uncertainty it was pricing in is gone.</p>
+<p>That's part of why I don't place these trades myself anymore. My account copies the entries and exits of a trader I follow through Alertsify, and the position sizing around high-IV events gets decided ahead of time instead of me talking myself into a full-size position two days before an earnings print because the chart looked good. Understanding IV was never the hard part. Sizing around it without hesitation, every time, was.</p>
+<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=implied_volatility_guide" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
+<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
+<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
+<hr>
+<nav aria-label="More articles">
+<p class="section-label">More from Alertsify</p>
+<ul class="related-list">
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html">Options Greeks Explained: Delta, Theta, Gamma in Plain Terms</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/theta-decay-explained.html">Theta Decay Explained: What It Actually Costs You</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/what-is-0dte-options-trading.html">0DTE Options: What They Are and Why They're Riskier</a></li>
+</ul>
+<p><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/">← All articles</a></p>
+</nav>
+</article>

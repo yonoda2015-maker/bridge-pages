@@ -1,0 +1,96 @@
+<title>Iron Condor Options Strategy Explained, With Real Math</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G331W5FGRC');
+</script>
+
+<meta name="description" content="Iron condor options strategy explained with real numbers: four legs, max profit, max loss, and both breakevens on one worked trade.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Iron Condor Options Strategy Explained, With Real Math">
+<meta property="og:description" content="Iron condor options strategy explained with real numbers: four legs, max profit, max loss, and both breakevens on one worked trade.">
+<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/iron-condor-options-strategy.html">
+<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:title" content="Iron Condor Options Strategy Explained, With Real Math">
+<meta name="twitter:description" content="Iron condor options strategy explained with real numbers: four legs, max profit, max loss, and both breakevens on one worked trade.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Iron Condor Options Strategy Explained, With Real Math", "description": "Iron condor options strategy explained with real numbers: four legs, max profit, max loss, and both breakevens on one worked trade.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-08", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/iron-condor-options-strategy.html"}}</script>
+<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/iron-condor-options-strategy.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
+<style>
+  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
+         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
+  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
+  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
+       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
+             font-family: Inter, -apple-system, sans-serif; }
+  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
+       font-weight: 700; color: var(--gold); }
+  p { margin: 0 0 22px; }
+  ol { margin: 0 0 22px; padding-left: 24px; }
+  li { margin-bottom: 12px; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
+  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
+  a { color: var(--accent); }
+  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
+              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
+              border-radius: 10px; font-size: 16px; }
+  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
+  .related-list li { margin-bottom: 10px; }
+  .related-list a { font-size: 15px; }
+</style>
+<!-- meta: primary_kw=iron condor options strategy; account=@Trusync11511 (Alertsify); word_target=1200-2200; evergreen, no dates or current-events referenced -->
+<article>
+<h1>Iron Condor Options Strategy Explained, With Real Math</h1>
+<div class="byline">Alertsify · copy the trade, not the guesswork · <span class="pub-date">August 8, 2026</span> · <span class="category-tag">Options Mechanics</span></div>
+<p>An iron condor is four separate option contracts sold and bought at the same time on the same stock, same expiration, built to make money if the stock does nothing at all. That's the entire pitch: get paid for a stock sitting still. I avoided this trade for most of year one because four legs sounded like four ways to get something wrong. It's actually one trade with a fixed maximum gain and a fixed maximum loss, known before you ever place it, and once I sat down and worked the numbers by hand instead of trusting a broker's risk graph, it stopped feeling complicated.</p>
+<h2>What the iron condor options strategy actually is</h2>
+<p>An iron condor is a put credit spread and a call credit spread, opened together on the same stock and the same expiration. You sell a put closer to the current price and buy a further-out put for protection. You sell a call closer to the current price and buy a further-out call for protection. Four legs, four strikes, one position. The two spreads sit on opposite sides of where the stock is trading right now, and the space between your short put and your short call is the range you're betting the stock stays inside.</p>
+<p>You collect a net credit the moment you open all four legs, because the options you sold are worth more than the options you bought. That credit is the most you can ever make on the trade. The width of whichever spread gets breached, minus that credit, is the most you can ever lose. Nothing about the payoff changes once the position is open — the four strikes lock in both numbers before the stock moves an inch.</p>
+<h2>The iron condor options strategy with real numbers</h2>
+<p>Say PYPL is trading at $72. You think it holds between $68 and $76 through expiration four weeks out, so you build a condor three dollars wide on each side. On the put side: sell the $68 put for $1.10, buy the $65 put for $0.45. On the call side: sell the $76 call for $1.20, buy the $79 call for $0.50.</p>
+<p>Add up what you collected and what you paid. Short put $1.10 plus short call $1.20 is $2.30 collected. Long put $0.45 plus long call $0.50 is $0.95 paid. Net credit: $1.35 a share, or $135 for one contract of each leg, since every contract covers 100 shares.</p>
+<p>That $135 is your max profit, full stop. You get to keep all of it if PYPL closes anywhere between $68 and $76 at expiration, because every leg expires worthless and there's nothing left to settle. Your max loss sits on whichever side gets tested. Each spread is three dollars wide, so if PYPL finishes below $65 or above $79, you owe the full $300 width on that side, minus the $135 credit you already banked, for a max loss of $165. That $165 number doesn't change whether the stock finishes at $64 or $40 — once you're past the long strike, the loss is capped exactly there.</p>
+<p>Your two breakevens sit just outside the short strikes. Lower breakeven: short put strike minus total credit, $68 minus $1.35, which is $66.65. Upper breakeven: short call strike plus total credit, $76 plus $1.35, which is $77.35. PYPL has room to drift down to $66.65 or up to $77.35 and you still walk away with something, even if it's less than the full $135. Only once the stock clears one of those two numbers does the trade actually lose money.</p>
+<h2>Reading the four outcomes</h2>
+<p>Scenario one: PYPL sits at $72 through expiration, dead flat. All four legs expire worthless. You keep the full $135 credit. This is the trade working exactly as designed, and it's also the most boring possible outcome — nothing moved, and that's the win.</p>
+<p>Scenario two: PYPL drifts to $79 by expiration. Your short call at $76 is now $3 in the money, and your long call at $79 is worth nothing yet. You owe $300 on the call side, minus the $135 you collected, for a loss of $165 — the max loss, hit exactly at your long strike. This is the outcome that tends to catch people off guard on the call side: PYPL only moved about ten percent, and you already lost your entire cushion.</p>
+<p>Scenario three: PYPL eases down to $67 by expiration. That's below your $68 short put but above your $66.65 breakeven. The put spread is worth $1, you paid net $1.35 for the whole condor, so you keep $0.35 a share, or $35. Small win, not the full credit, but still a win — this is the middle ground most people don't picture when they first hear "four legs."</p>
+<p>Scenario four: PYPL gaps down to $60 on bad news. Both the short and long put are deep in the money, the spread is worth its full $3 width, you owe $300 minus the $135 credit, for the same $165 max loss as scenario two. It doesn't matter if PYPL is at $60 or $40 — past $65, the loss stops growing, because the long put you bought is doing exactly the job you paid for.</p>
+<h2>Why the iron condor is a range bet, not a direction bet</h2>
+<p>A condor doesn't care whether PYPL goes up or down inside the range. It cares whether the stock stays inside $68 to $76, and beyond that, whether it stays inside the wider $66.65 to $77.35 band before the losses start eating into the credit. You're selling the idea that the options market has priced in more movement than the stock is actually going to deliver. The $1.35 you collected is compensation for taking the other side of that bet — you're short volatility on both ends at once.</p>
+<p>That's also why an iron condor gets expensive to run into a known catalyst. If PYPL had earnings sitting inside that four-week window, implied volatility on all four strikes would be inflated ahead of the report, which sounds like a bigger credit and looks like a better trade. It isn't automatically better. Wider expected moves mean the market is pricing in exactly the kind of swing that blows through one side of your condor, and the extra credit you collect for selling into that inflated volatility often isn't enough to cover the extra risk of the range actually breaking.</p>
+<h2>Where I actually manage risk on a condor</h2>
+<p>The width you pick on each side is the whole risk conversation. A three-dollar-wide condor on PYPL caps the loss at $165 against a $135 max gain — worse than even money if you're wrong, better odds of being right because the range you need to hold is wide relative to how far the stock usually moves in four weeks. Go narrower and the max loss shrinks, but so does the room the stock has to move before you're underwater on one side. Go wider and you collect less credit relative to the risk you're taking on, because the strikes you're selling sit closer to where the stock already is.</p>
+<p>The other half of managing a condor is deciding what happens when one side gets threatened before expiration. I don't wait for a spread to hit max loss before I act. If PYPL runs hard toward $76 with two weeks still on the clock, I'm closing that side or rolling it out rather than hoping it reverses, because a condor that's still open on both sides when one side is already in trouble is carrying risk I never agreed to when I opened the trade. The math above tells you what happens if you hold to expiration. It doesn't tell you what to do with two weeks left and a strike getting tested, and that decision is where most of the actual skill in running condors lives.</p>
+<h2>Where execution stops being something I trust myself with</h2>
+<p>Four legs opening at once means four separate fills, and getting a bad price on even one leg changes the whole credit you actually collect versus the one you modeled on paper. I learned price action from scratch — no indicators, just levels and structure — and I can size a condor and pick strikes without much trouble at this point. What I still don't trust myself with is placing four legs fast enough, at a fair enough price, without freezing for a second on which order to fill them in while the stock ticks against me mid-entry.</p>
+<p>That's the piece I run through Alertsify now instead of managing four tickets by hand. It doesn't decide where I put the strikes or how wide I build the condor — that read on where PYPL or SPY or whatever I'm trading is likely to sit in four weeks is still mine to make. It executes the legs together once I've made the call, which matters more on a four-leg trade than it ever did on a single option. I'm somewhere north of two hundred days now without placing a manual order myself, and the closest that streak came to breaking was a condor that moved fast on one side before I'd finished thinking through whether to close it or hold — I let the system run the exit instead of touching it myself.</p>
+<h2>What this trade actually costs you to get wrong</h2>
+<p>Year one, I was still trying to guess direction on every single trade, and I lost $11,400 finding out how often I was wrong. An iron condor doesn't ask you to guess direction. It asks you to guess a range, and it pays you up front for taking that side of the bet. That's a real difference, but it's not a free one — the $165 max loss on the PYPL trade above is bigger than the $135 max gain, and a condor that gets tested on one side loses more than it would have made if the stock had just sat still.</p>
+<p>The honest read on an iron condor is that it's a high-frequency, small-win trade that occasionally eats a loss bigger than several wins combined. That's not a flaw to hide. It's the actual shape of the payoff, and knowing that shape before you're in the trade is the difference between a condor that fits how you size positions and one that quietly costs you more than the string of small wins that came before it.</p>
+<p>If you want to see how I handle getting four legs filled without lagging on any one of them:</p>
+<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=iron_condor_strategy" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
+<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
+<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
+<hr>
+<nav aria-label="More articles">
+<p class="section-label">More from Alertsify</p>
+<ul class="related-list">
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/straddle-options-strategy-explained.html">Straddle Options Strategy Explained, With Real Math</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/credit-spread-vs-debit-spread.html">Credit Spread vs Debit Spread: The Real Difference</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html">Options Greeks Explained: Delta, Theta, Gamma in Plain Terms</a></li>
+</ul>
+<p><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/">← All articles</a></p>
+</nav>
+</article>
