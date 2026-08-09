@@ -1,0 +1,96 @@
+<title>Vertical Spread vs Single Leg Option: The Real Cost</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G331W5FGRC');
+</script>
+
+<meta name="description" content="Vertical spread vs single leg option, with real numbers on both. One caps your upside to lower your cost, the other pays full price for an open ceiling.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vertical Spread vs Single Leg Option: The Real Cost">
+<meta property="og:description" content="Vertical spread vs single leg option, with real numbers on both. One caps your upside to lower your cost, the other pays full price for an open ceiling.">
+<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/vertical-spread-vs-single-leg-option.html">
+<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:title" content="Vertical Spread vs Single Leg Option: The Real Cost">
+<meta name="twitter:description" content="Vertical spread vs single leg option, with real numbers on both. One caps your upside to lower your cost, the other pays full price for an open ceiling.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Vertical Spread vs Single Leg Option: The Real Cost", "description": "Vertical spread vs single leg option, with real numbers on both. One caps your upside to lower your cost, the other pays full price for an open ceiling.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-08", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/vertical-spread-vs-single-leg-option.html"}}</script>
+<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/vertical-spread-vs-single-leg-option.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
+<style>
+  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
+         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
+  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
+  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
+       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
+             font-family: Inter, -apple-system, sans-serif; }
+  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
+       font-weight: 700; color: var(--gold); }
+  p { margin: 0 0 22px; }
+  ol { margin: 0 0 22px; padding-left: 24px; }
+  li { margin-bottom: 12px; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
+  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
+  a { color: var(--accent); }
+  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
+              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
+              border-radius: 10px; font-size: 16px; }
+  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
+  .related-list li { margin-bottom: 10px; }
+  .related-list a { font-size: 15px; }
+</style>
+<!-- meta: primary_kw=vertical spread vs single leg option; account=@Trusync11511 (Alertsify); word_target=1200-2200; evergreen, no dates or current-events referenced -->
+<article>
+<h1>Vertical Spread vs Single Leg Option: The Real Cost</h1>
+<div class="byline">Alertsify · copy the trade, not the guesswork · <span class="pub-date">August 8, 2026</span> · <span class="category-tag">Options Mechanics</span></div>
+<p>Vertical spread vs single leg option isn't a question of which one wins more. It's a question of what you're paying for the ceiling you're keeping. A single leg call or put costs more up front and lets your profit run as far as the stock will take it. A vertical spread sells off part of that ceiling on the way in, and in exchange your cost drops and your max loss gets fixed at a number you know before the trade opens. Same directional read, two very different capital commitments. I ran naked single-leg options for most of year one because a spread felt like giving away upside I hadn't even earned yet. What I hadn't worked out was how much that open-ended ceiling was actually costing me on trades that never got anywhere near it.</p>
+<h2>What a single leg option actually is</h2>
+<p>A single leg option is one contract — a call if you think the stock goes up, a put if you think it goes down. You pay the full premium the moment you buy it, and that premium is your entire max loss. There's no second leg selling off any of the cost. Your max profit on a call is technically unlimited, since there's no ceiling on how high a stock can go before expiration. Your breakeven is the strike plus what you paid, and every dollar the stock moves past that point is a dollar in your pocket, with nothing capping it on the way up.</p>
+<p>That open ceiling is the entire sales pitch for a single leg option, and it's real. The problem is what you paid to get it. Full premium on a single option is priced for every outcome, including the low-probability one where the stock rips far past your strike. Most of the time, a stock doesn't move that far, and you're paying full price for a scenario that doesn't show up.</p>
+<h2>What a vertical spread actually is</h2>
+<p>A vertical spread is the same directional bet with a second leg attached. You buy the option closer to the stock's current price, same as the single leg trade, but you also sell a further-out option in the same direction to offset part of the cost. That sold leg caps how much you can make, but it also lowers what you paid to get in. Your max loss is fixed at the net premium, same as buying a single option outright. Your max profit is capped at the width between the two strikes, minus what you paid — a real number you can calculate before the trade ever opens, not an open-ended "however far it runs."</p>
+<p>The tradeoff is explicit: you're giving up the tail-end outcome, the stock running far past both strikes, in exchange for a lower entry cost and the same capped-loss protection you'd have gotten from the single leg anyway. The question worth asking isn't whether you'll ever hit that tail outcome. It's how often you actually do, versus how much cheaper the capped version is every single time you're wrong.</p>
+<h2>Single leg call, with real numbers</h2>
+<p>Say NVDA is trading at $118. You think it clears $130 inside five weeks, so you buy the $120 call outright for $5.60 — $560 for one contract. Your breakeven is $125.60, the strike plus premium. Your max loss is the full $560 if NVDA finishes at or below $120. Your max profit has no ceiling: if NVDA runs to $140, that call is worth roughly $20, for a profit near $1,440 on your $560 outlay. If it runs to $160, the call is worth close to $40, and the profit keeps climbing right along with the stock. Nothing about the single leg call limits how far that number can go.</p>
+<h2>Vertical spread, same stock, same read</h2>
+<p>Same NVDA trade, same five-week window, same $130 target — but instead of buying the $120 call alone, you buy the $120 call for $5.60 and sell the $130 call against it for $2.35. Net debit: $3.25 a share, $325 for the pair. Your max loss is $325, lower than the single leg's $560, because the premium you collected from the short $130 call offset part of what you paid. Your breakeven drops too: $123.25 instead of $125.60, meaning NVDA has to travel less than four percent from $118 to get you to even, instead of the roughly six and a half percent the single leg needed.</p>
+<p>Your max profit is the ten-dollar width between $120 and $130, minus the $325 you paid: $675. That's the ceiling, full stop. If NVDA closes at $130 or anywhere above it at expiration, you make exactly $675 — not $1,440, not $2,675. Run the same $140 scenario that made the single leg call worth $1,440, and the spread still caps out at $675, because the short $130 call is eating every dollar of gain past its strike, dollar for dollar, the same way it ate premium on the way in.</p>
+<h2>Where the tradeoff actually shows up</h2>
+<p>Put the two trades side by side and the shape is obvious. Single leg call: $560 at risk, breakeven at $125.60, profit that keeps climbing the further NVDA runs. Vertical spread: $325 at risk, breakeven at $123.25, profit capped at $675 no matter how far past $130 the stock goes. The spread costs 42% less to enter and needs a smaller move to break even. The single leg costs more and needs a bigger move to get started, but there's no number where the spread eventually catches up if NVDA keeps running — past $130, the single leg just keeps separating from the capped position, and by $140 it's already worth more than double what the spread can ever pay.</p>
+<p>That gap is the actual price of defined risk. You're not paying for insurance in the usual sense — you're pre-selling the outcome where you're right by a wide margin, in exchange for costing less every time you're right by a smaller margin or wrong entirely. Whether that trade is worth making depends on how the stock actually tends to move, not on which structure sounds more conservative on paper.</p>
+<h2>When the spread's capital efficiency actually wins</h2>
+<p>The case for the vertical spread over the single leg isn't about being right more often. It's about what a smaller, capped max loss does to how many of these trades you can actually run at once. $325 at risk instead of $560 means the same account can size two spread positions across two different setups for roughly what one single-leg call would have tied up, without changing the total dollar amount at risk. That's capital efficiency in the literal sense — more independent bets funded by the same account balance, each one capped at a number you already know going in.</p>
+<p>It also matters on the stocks where a big move past your target is genuinely unlikely. NVDA clearing $130 by five percent is one thing. NVDA clearing $150 by twenty-seven percent inside the same five weeks is a different, much rarer event, and the single leg call is charging you full premium partly for a scenario like that one, whether or not you think it's realistic. If your actual read on the stock is "moves to around $130, maybe a bit past it," the spread's $675 ceiling was never costing you anything you expected to collect in the first place. You were paying extra for a tail you didn't think was coming.</p>
+<h2>When the single leg's open ceiling is worth the extra cost</h2>
+<p>The case runs the other way when the setup is the kind where a small move and a huge move aren't actually close in probability — a stock with a real catalyst on the calendar, a name that's gapped 15% or more on past surprises of a similar shape, a setup where "past $130" and "past $160" are both plausible outcomes rather than one likely and one theoretical. In that setup, capping your profit at $675 to save $235 in premium is giving away real expected value, not a hedge against a tail you'd never have hit anyway.</p>
+<p>The honest test isn't which structure feels safer. It's whether you can point to a specific reason this stock, this setup, is more likely than usual to blow through your short strike and keep going. If you can't point to that reason, the spread's lower cost and tighter breakeven are doing more for your account than the uncapped ceiling you'd be paying extra to keep.</p>
+<h2>The part that has nothing to do with strike selection</h2>
+<p>Neither of these trades is hard to size on paper — one leg or two, the math above takes a few minutes either way. What actually separates them in practice is that a vertical spread means managing two fills instead of one, and a bad fill on the short leg can eat into the exact cost savings that made the spread worth running in the first place. I've watched a spread's net debit come in wider than what I'd modeled because the short leg filled late, at a worse price, while the stock had already ticked in my direction on the long leg.</p>
+<p>That's the piece I run through Alertsify now instead of manually chasing two separate fills on every spread I open. It doesn't decide whether NVDA is a single-leg setup or a spread setup — that read on how far the stock is actually likely to run is still mine to make before I place anything. It executes both legs together once I've made that call, so the net debit I modeled is closer to the net debit I actually get, instead of losing part of the spread's advantage to a slow second leg.</p>
+<h2>What to actually take from this</h2>
+<p>Vertical spread vs single leg option isn't a question with one right answer sitting underneath it. It's a question of what you think the stock's realistic range of outcomes looks like, and whether the tail scenario past your short strike is a real possibility you'd be giving up or a low-probability event you were overpaying to keep access to. The spread is cheaper and needs a smaller move to work, every time, because it's not carrying the cost of an unlimited outcome. The single leg carries that cost so the ceiling stays open, and there's no structure fix for the fact that sometimes the stock actually goes there.</p>
+<p>If you want to see how I handle getting both legs of a spread filled without losing the cost edge that made it worth running:</p>
+<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=vertical_spread_vs_single_leg" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
+<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
+<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
+<hr>
+<nav aria-label="More articles">
+<p class="section-label">More from Alertsify</p>
+<ul class="related-list">
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/credit-spread-vs-debit-spread.html">Credit Spread vs Debit Spread: The Real Difference</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/iron-condor-options-strategy.html">Iron Condor Options Strategy Explained, With Real Math</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/straddle-options-strategy-explained.html">Straddle Options Strategy Explained, With Real Math</a></li>
+</ul>
+<p><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/">← All articles</a></p>
+</nav>
+</article>
