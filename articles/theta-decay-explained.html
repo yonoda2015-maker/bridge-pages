@@ -1,0 +1,91 @@
+<title>Theta Decay Explained: What It Actually Costs You</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G331W5FGRC');
+</script>
+
+<meta name="description" content="Theta decay explained with a real options chain example: what time decay costs you day by day, and why holding a losing contract is a math problem, not luck.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Theta Decay Explained: What It Actually Costs You">
+<meta property="og:description" content="Theta decay explained with a real options chain example: what time decay costs you day by day, and why holding a losing contract is a math problem, not luck.">
+<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/theta-decay-explained.html">
+<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:title" content="Theta Decay Explained: What It Actually Costs You">
+<meta name="twitter:description" content="Theta decay explained with a real options chain example: what time decay costs you day by day, and why holding a losing contract is a math problem, not luck.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Theta Decay Explained: What It Actually Costs You", "description": "Theta decay explained with a real options chain example: what time decay costs you day by day, and why holding a losing contract is a math problem, not luck.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-08", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/theta-decay-explained.html"}}</script>
+<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/theta-decay-explained.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
+<style>
+  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
+         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
+  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
+  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
+       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
+             font-family: Inter, -apple-system, sans-serif; }
+  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
+       font-weight: 700; color: var(--gold); }
+  p { margin: 0 0 22px; }
+  ol { margin: 0 0 22px; padding-left: 24px; }
+  li { margin-bottom: 12px; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
+  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
+  a { color: var(--accent); }
+  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
+              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
+              border-radius: 10px; font-size: 16px; }
+  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
+  .related-list li { margin-bottom: 10px; }
+  .related-list a { font-size: 15px; }
+</style>
+<!-- meta: primary_kw=theta decay explained; account=@Trusync11511 (Alertsify); word_target=1200-2200 -->
+<article>
+<h1>Theta Decay Explained: What It Actually Costs You</h1>
+<div class="byline">Alertsify · copy the trade, not the guesswork · <span class="pub-date">August 8, 2026</span> · <span class="category-tag">Options Mechanics</span></div>
+<p>Theta decay is the daily rent you pay for holding an option, and it gets charged whether the stock moves in your favor, sits still, or drifts against you. Year 1, I didn't know that number existed. I knew options "lost value over time" in the vague way everyone tells you, but I never once looked up the actual dollar figure attached to a position I was holding. I just watched the price shrink and assumed I'd picked the wrong direction. Half the time I hadn't. The stock had barely moved. Time had done the damage on its own.</p>
+<p>That gap between "the stock was flat" and "I still lost money" is theta decay, and it's the single most underestimated cost in options trading for anyone coming from stocks. A share of stock you hold for a week costs you nothing extra just for holding it. An option charges you every single day, and the closer you get to expiration, the higher that daily bill climbs.</p>
+<h2>What theta actually measures</h2>
+<p>Theta is one of the Greeks listed right next to an option's price on any broker's chain. It tells you, in dollars, how much value that contract is expected to lose in one day if nothing else changes — no move in the stock, no shift in volatility, just one calendar day passing. If a contract shows Theta of -0.06, it's losing about 6 cents a day, or $6 a day per contract once you account for the 100-share multiplier.</p>
+<p>That number isn't constant. It grows as expiration gets closer, and it grows fastest in the final one to two weeks of a contract's life. A monthly option might bleed a few cents a day when there's a month left on it. The same strike, with three days left, can bleed ten times that. This is why traders talk about time decay "accelerating" — it's not a straight line down to zero, it's closer to a ramp that stays flat for a while and then drops off a cliff in the last stretch.</p>
+<h2>Why decay isn't the same every day</h2>
+<p>The shape of that curve comes down to how much time value is left to lose. Early in a contract's life, there's a lot of time value built into the premium, and losing one day out of forty-five barely dents it. Late in a contract's life, there's very little time value left, and losing one day out of three is a much bigger percentage of what remains. The dollar amount lost per day goes up even as the total remaining value goes down, which is the part that catches people off guard — the position can be worth less and be decaying faster at the same time.</p>
+<p>At-the-money contracts decay the fastest of all, because that's where the most time value is concentrated. A contract that's deep in the money behaves more like the stock itself and carries less pure time premium to lose. A contract that's far out of the money has so little value left that there's not much decay left to lose either — it's already cheap because the market thinks it's unlikely to pay off. The real decay risk sits in the middle, in the contracts that look reasonably priced and reasonably likely to work, which is exactly where most people are buying.</p>
+<h2>The trade that made this real: QQQ $384 calls</h2>
+<p>QQQ was trading at $381 on a Monday, twelve trading days out from that month's expiration. I bought the $384 calls for $3.40, five contracts, total cost $1,700. Theta on the contract read -0.09 at entry — about $9 a day per contract, $45 a day across the position, before QQQ moved a single cent.</p>
+<p>QQQ didn't crash. It didn't rally either. It sat in a tight range between $380 and $382.50 for the better part of the week, doing almost exactly nothing. Day one, the contract dropped from $3.40 to $3.29. Day two, $3.29 to $3.17. By day four, still with QQQ basically unchanged from where I'd entered, the contract was at $2.86. That's $0.54 gone — $270 across five contracts — and QQQ had moved less than half a percent the entire time. None of that came from a wrong directional read. It came from Theta, and Theta alone, because as expiration got closer the daily bill wasn't $9 anymore. By day four it had grown to roughly $0.16 a day, almost double where it started, purely from time running out.</p>
+<p>By day seven, with five trading days left and QQQ finally pushing up to $383.40 — close to my strike, just not through it — the contract was worth $2.20. I was down $1.20 a share, $600 on the position, on a trade where the stock had actually moved toward my strike. The move helped. It just wasn't enough to outrun what Theta had already taken, because by that point Theta had climbed past $0.20 a day and the days remaining had shrunk to almost nothing. I closed it there rather than let the last five days finish the job — those final days are when Theta does the most damage per day of anything in the contract's life, and I'd already watched what a "basically flat" week could do without the last stretch making it worse.</p>
+<h2>The decision that actually costs money</h2>
+<p>The math above isn't the hard part. Anyone can look up a Theta number and multiply it by days remaining. The hard part is what you do with that number in the moment — whether you sell on day four when the position is down $270 and the stock has barely moved, or you hold because "it still has time" and watch that same decay compound through the final week when it's fastest. I held too long more times than I want to count in year one, telling myself the stock still had room, while the actual math sitting right there in the Theta column was already telling me the contract needed a bigger move, sooner, just to get back to even.</p>
+<p>That's the piece that isn't really about understanding Greeks. I understood Theta by year two. What I was bad at was acting on what it was telling me without negotiating with myself first, holding a decaying position an extra day or two because I didn't want to be wrong, which is exactly the kind of decision that turns a manageable loss into a expensive one.</p>
+<h2>How to actually manage decay instead of guessing</h2>
+<p>Check Theta before you enter, not after. Know the daily dollar cost of the position you're about to open, and decide up front how many days of that cost you're willing to pay while you wait for the move to happen. Favor contracts with more time left when you're not confident about timing — a 45-day option gives the stock room to be right eventually. A 5-day option demands the move happen almost immediately, or Theta wins by default. And treat the final week before expiration as a different trade entirely, because the decay curve in that window behaves nothing like it did a month out. A position that felt fine to hold at three weeks can be losing money by the hour at three days, even with the stock sitting still.</p>
+<h2>The honest limits here</h2>
+<p>None of this makes decay something you can avoid. Every option loses time value, that's the trade you're making by buying one instead of the stock, and no strategy removes that cost entirely — you can only manage how much of it you're exposed to and for how long. A fast-moving stock can still outrun Theta and make you money even on a short-dated contract. A slow one can eat you alive even on a contract with weeks left. Knowing the number doesn't guarantee the outcome. It just tells you the size of the bill you're agreeing to pay while you wait to find out.</p>
+<h2>Where I ended up</h2>
+<p>These days I still check Theta on everything before I size a position, the same habit that would have saved me real money in year one if I'd had it. What changed is what happens after I see the number. My account copies the entries and exits of a trader I follow through Alertsify, so when a position's decay bill stops making sense against the move that's actually happening, the exit gets taken the way it was planned instead of me talking myself into one more day. Understanding Theta was never the part I was missing. Acting on it, on time, without hesitation, was.</p>
+<p>If you want to see what that actually looks like day to day:</p>
+<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&utm_source=article&utm_medium=x_articles&utm_campaign=theta_decay_explained" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
+<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
+<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
+<hr>
+<nav aria-label="More articles">
+<p class="section-label">More from Alertsify</p>
+<ul class="related-list">
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html">Options Greeks Explained: Delta, Theta, Gamma in Plain Terms</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/what-is-0dte-options-trading.html">0DTE Options: What They Are and Why They're Riskier</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-long-to-hold-options-trade.html">How Long to Hold an Options Trade Before You Exit</a></li>
+</ul>
+<p><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/">← All articles</a></p>
+</nav>
+</article>

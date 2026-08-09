@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/alertsify.html</loc>
@@ -22,6 +22,10 @@
   </url>
   <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/american-vs-european-style-options.html</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/assignment-risk-short-options.html</loc>
     <lastmod>2026-08-08</lastmod>
   </url>
   <url>
@@ -97,6 +101,10 @@
     <lastmod>2026-08-03</lastmod>
   </url>
   <url>
+    <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/higher-lows-lower-highs-trend.html</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/how-copy-trading-works.html</loc>
     <lastmod>2026-08-03</lastmod>
   </url>
@@ -137,6 +145,10 @@
     <lastmod>2026-08-07</lastmod>
   </url>
   <url>
+    <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-identify-market-structure-shift.html</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-journal-your-trades.html</loc>
     <lastmod>2026-08-03</lastmod>
   </url>
@@ -170,6 +182,10 @@
   </url>
   <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/is-options-trading-gambling.html</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/liquidity-grab-vs-real-breakout.html</loc>
     <lastmod>2026-08-08</lastmod>
   </url>
   <url>
@@ -226,6 +242,10 @@
   </url>
   <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/reading-order-flow-without-level-2.html</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/revenge-trading-after-a-loss.html</loc>
     <lastmod>2026-08-08</lastmod>
   </url>
   <url>
@@ -287,6 +307,10 @@
   <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/swing-high-swing-low-explained.html</loc>
     <lastmod>2026-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/theta-decay-explained.html</loc>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
     <loc>https://yonoda2015-maker.github.io/bridge-pages/articles/trading-gdp-and-pce-reports.html</loc>
