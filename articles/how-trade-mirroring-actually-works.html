@@ -1,0 +1,88 @@
+<!-- meta: The mechanism is boring on purpose — API call, proportional math, an order type. Boring is what makes it trustworthy. -->
+<title>How Trade Mirroring Actually Works (Mechanics)</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G331W5FGRC');
+</script>
+
+<meta name="description" content="How trade mirroring actually works: the API relay, proportional sizing math, order types used, and exactly where slippage between fills comes from.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How Trade Mirroring Actually Works (Mechanics)">
+<meta property="og:description" content="How trade mirroring actually works: the API relay, proportional sizing math, order types used, and exactly where slippage between fills comes from.">
+<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/how-trade-mirroring-actually-works.html">
+<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
+<meta name="twitter:title" content="How Trade Mirroring Actually Works (Mechanics)">
+<meta name="twitter:description" content="How trade mirroring actually works: the API relay, proportional sizing math, order types used, and exactly where slippage between fills comes from.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How Trade Mirroring Actually Works (Mechanics)", "description": "How trade mirroring actually works: the API relay, proportional sizing math, order types used, and exactly where slippage between fills comes from.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-09", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/how-trade-mirroring-actually-works.html"}}</script>
+<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-trade-mirroring-actually-works.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
+<style>
+  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
+         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
+  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
+  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
+       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
+  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
+             font-family: Inter, -apple-system, sans-serif; }
+  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
+       font-weight: 700; color: var(--gold); }
+  p { margin: 0 0 22px; }
+  ol { margin: 0 0 22px; padding-left: 24px; }
+  li { margin-bottom: 12px; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
+  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
+  a { color: var(--accent); }
+  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
+              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
+              border-radius: 10px; font-size: 16px; }
+  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
+  .related-list li { margin-bottom: 10px; }
+  .related-list a { font-size: 15px; }
+</style>
+<article>
+<h1>How Trade Mirroring Actually Works (Mechanics)</h1>
+<div class="byline">Alertsify · copy the trade, not the guesswork · <span class="pub-date">August 9, 2026</span> · <span class="category-tag">Copy Trading</span></div>
+<p>I spent six years trading before I trusted a system to mirror trades into my account automatically, and the thing that finally got me comfortable with it wasn't a testimonial or a screenshot of somebody's gains. It was reading the actual mechanism — what happens between a source trader's fill and mine, step by step, no marketing language in between. Most explanations of copy trading stop at "it copies the trade for you" and leave the actual plumbing a black box. That's backwards. If you're going to let software place orders in your account, you should know exactly what it's doing and exactly where things can go wrong. This is that explanation.</p>
+<h2>The relay: how the order actually gets from their account to yours</h2>
+<p>A trade mirroring system isn't watching a chat message or reading a screenshot. It's connected to the source trader's brokerage through an API — a programmatic connection that fires an event the instant an order fills, not when someone types about it. That event contains the actual fill data: symbol, side, contract or share type, fill price, size, and timestamp. The mirroring system receives that event, and this is the part people skip past: it doesn't just forward the order. It has to translate it, because the order that makes sense for the source trader's account almost never makes sense unmodified for yours.</p>
+<p>Translation means recalculating size for your account, checking that the instrument is tradable in your account type, and then submitting a new, independent order through your broker's own API. Your fill is not a copy of their order ticket. It's a brand new order, generated by the mirroring system, sent to your broker, and filled by your broker's own matching engine against the market as it exists at that moment. That distinction matters because it explains why your price is never guaranteed to match theirs exactly — you're not buying their position, you're placing your own trade a few seconds after they placed theirs.</p>
+<h2>Proportional sizing: the math nobody explains</h2>
+<p>The reason a mirroring system can't just forward the order is sizing. If a source trader with a $150,000 account buys 20 contracts, sending 20 contracts to an account with $8,000 in it isn't mirroring the trade — it's a way to wipe the account on the first bad entry. So the system calculates size as a percentage of account value or a percentage of buying power, not as a raw contract count. If the source trader is risking roughly 2% of their account on a position, the system computes what 2% of your account looks like at the current price of that instrument, rounds to a tradable size, and submits that instead.</p>
+<p>This is why two accounts of very different sizes following the same source trader end up with completely different contract counts but a similar risk profile relative to each balance. It's also where a second, smaller layer of slippage lives that has nothing to do with timing: rounding. If 2% of your account works out to 3.4 contracts, the system has to round down to 3, which means your risk-adjusted exposure is never going to match the source trader's to the decimal. That's not a bug. It's the unavoidable consequence of position sizing on whole contracts instead of fractional ones, and it's usually a smaller deviation than the price movement in the seconds it takes to place the order.</p>
+<h2>Order types: what actually gets sent to the exchange</h2>
+<p>The order type matters as much as the sizing math, and it's the part most explanations skip entirely. A naive mirroring system could just fire a market order the instant it receives the source fill — guaranteed execution, no control over price. That's fast, but on a fast-moving options contract a market order can fill meaningfully worse than what you expected, especially if the bid-ask spread has widened in the seconds since the source trader's own fill.</p>
+<p>A better-built system uses a marketable limit order instead: a limit price set a small, defined distance beyond the current quote, wide enough that it fills almost as fast as a market order under normal conditions, but capped so the order won't chase a price that's already run away. If the market moves past that cap before the order fills, the order either fills at the capped price or doesn't fill at all — and not filling is a feature, not a failure, because it means the system refused to pay a price meaningfully worse than what triggered the copy in the first place. Some systems let you set how wide that cap is; a tighter cap means fewer bad fills but more missed trades on fast movers, and that tradeoff is a real design choice, not a technical afterthought.</p>
+<h2>A real trade, walked through mechanically</h2>
+<p>Take a concrete example instead of an abstract one. The trader I follow entered QQQ calls at 1:52:10pm, strike chosen off a break above a level that had held twice that morning, filled at $2.40 with the underlying at $481.15. That fill event hit the mirroring system's API almost immediately — the system doesn't poll for updates, it receives a push the moment the source broker confirms the fill, so there's no lag from checking a feed on a timer.</p>
+<p>The system pulled my account balance, calculated that the source trader's position represented about 2.5% of their account risk, and worked out the equivalent size for mine given my balance and the option's current price. It generated a marketable limit order capped a few cents above the last quoted ask and submitted it to my broker at 1:52:12pm. My broker's matching engine filled it at $2.44 with the underlying at $481.30 — two seconds later, four cents worse per contract, because in those two seconds the underlying had ticked fifteen cents higher and the option's price moved with it. That four-cent gap is the entire slippage story for that trade: not a system failure, not a bad relay, just the real cost of two seconds of market movement on a contract with real gamma. The position closed later that day up $310 on my side against the source trader's proportionally similar result. Neither of us got the other's exact number, and neither of us needed to.</p>
+<h2>Where slippage actually comes from</h2>
+<p>People assume slippage in mirrored trades is about speed alone, but speed is only one input. There are three separate sources, and they stack. First, the relay and processing time — the seconds between the source fill and your order being submitted, during which the underlying can move. Second, the spread itself — even a marketable limit order has to cross the bid-ask spread to fill, and a wider spread on a less liquid contract means a wider gap regardless of timing. Third, sizing rounding — the small mismatch between your calculated proportional size and the nearest whole contract, which changes your dollar exposure without changing your price at all. None of these three is a defect in the system. They're the physical and mathematical reality of two separate orders filling seconds apart in a market that never stops moving. A system that claims zero slippage is either not being honest about the mechanism or not handling real order flow at all.</p>
+<h2>What actually breaks, and what doesn't</h2>
+<p>The failure modes worth knowing about are specific, not vague. An API disconnect between the mirroring system and either broker means an order simply doesn't get relayed — the system should alert you when that happens rather than fail silently, and it's worth confirming a platform does before you rely on it. A halted or illiquid contract can leave a marketable limit order unfilled entirely, which again is the cap working as designed, not a malfunction. And a source trader modifying or canceling an order fast enough can create a race condition where your mirrored order is already in flight when the cancellation arrives — a well-built system handles that by attempting a corresponding cancel or immediate close on your side, but it's a real edge case, not a hypothetical one. None of this is exotic. It's the same category of thing that happens to a human trader manually placing orders, just compressed into a smaller window.</p>
+<p>Knowing the mechanism changed how I think about the whole thing. I used to treat automated execution as a mystery box that either worked or didn't. Now I know it's an API call, a sizing calculation, and an order type with a defined price cap — three plain, checkable pieces, not magic. That's also the part that made me trust it enough to actually run my account on it, because a system I can explain is a system I can evaluate, and a system I can evaluate is one I'm willing to let touch real money.</p>
+<p>These days my account mirrors a trader I follow through Alertsify, and I picked it after digging into exactly this — how the relay works, how sizing is calculated, what order type gets used and why. It doesn't erase slippage, and it can't fix a bad trade on the other end. It just means the mechanism between their fill and mine is one I actually understand instead of one I have to take on faith. If you want to see how it's built:</p>
+<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=how_trade_mirroring_works" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
+<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
+<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
+<hr>
+<nav aria-label="More articles">
+<p class="section-label">More from Alertsify</p>
+<ul class="related-list">
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-copy-trading-works.html">How Does Copy Trading Work? What It Actually Fixes</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-fast-does-copy-trading-execute.html">How Fast Does Copy Trading Execute? Real Numbers</a></li>
+<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/signal-services-vs-copy-trading.html">Signal Services vs Copy Trading: The Real Difference</a></li>
+</ul>
+<p><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/">← All articles</a></p>
+</nav>
+</article>
