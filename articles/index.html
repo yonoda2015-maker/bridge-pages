@@ -32,10 +32,22 @@
   .card h2 { font-size: 20px; margin: 8px 0 8px; line-height: 1.35; }
   .card p { font-size: 14.5px; color: var(--muted); margin: 0; line-height: 1.6; }
   .card-cat { font-size: 11px; color: var(--muted); margin-left: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .topic-nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 44px; }
+  .topic-nav a { display: inline-block; border: 1px solid rgba(255,255,255,0.14); border-radius: 999px;
+                 padding: 8px 16px; font-size: 13px; color: var(--text); text-decoration: none; }
+  .topic-nav a:hover { border-color: var(--accent); color: var(--accent); }
 </style>
 <main>
 <h1>Trading education articles</h1>
 <p class="lede">Written from real trading experience — price action, risk management, and options mechanics. No signal-selling, no income promises.</p>
+<nav class="topic-nav" aria-label="Browse by topic">
+<a href="/bridge-pages/articles/price-action-guide.html">Price Action</a>
+<a href="/bridge-pages/articles/options-mechanics-guide.html">Options Mechanics</a>
+<a href="/bridge-pages/articles/risk-management-guide.html">Risk Management</a>
+<a href="/bridge-pages/articles/copy-trading-guide.html">Copy Trading</a>
+<a href="/bridge-pages/articles/trading-psychology-guide.html">Trading Psychology</a>
+<a href="/bridge-pages/articles/trading-around-macro-events-guide.html">Macro Events</a>
+</nav>
 <a class="card" href="/bridge-pages/articles/american-vs-european-style-options.html"><span class="card-brand">Alertsify</span><span class="card-cat">Options Mechanics</span><h2>American vs European Style Options Explained</h2><p>American style vs European style options: American exercises anytime, European only at expiration. Why SPY and SPX behave differently, with a real example.</p></a>
 <a class="card" href="/bridge-pages/articles/best-time-of-day-to-trade-stocks.html"><span class="card-brand">Draw Lines Make Money</span><span class="card-cat">Price Action</span><h2>Best Time of Day to Trade Stocks: An Honest Breakdown</h2><p>The best time of day to trade stocks depends on what you're trying to do. Here's how the open, the lunch lull, and the close actually behave.</p></a>
 <a class="card" href="/bridge-pages/articles/best-timeframe-for-day-trading.html"><span class="card-brand">Draw Lines Make Money</span><span class="card-cat">Price Action</span><h2>Best Timeframe for Day Trading (Honest Answer)</h2><p>The best timeframe for day trading isn't fixed — it's whichever one matches your reaction speed. Most beginners pick one that's too fast.</p></a>
@@ -140,5 +152,7 @@
 <a class="card" href="/bridge-pages/articles/wheel-strategy-options-explained.html"><span class="card-brand">Alertsify</span><span class="card-cat">Options Mechanics</span><h2>The Wheel Strategy Explained: Full Cycle, Real Numbers</h2><p>The wheel strategy explained with one real trade: cash-secured put, assignment, then a covered call, with running dollar totals at every step.</p></a>
 <a class="card" href="/bridge-pages/articles/how-trade-mirroring-actually-works.html"><span class="card-brand">Alertsify</span><span class="card-cat">Copy Trading</span><h2>How Trade Mirroring Actually Works (Mechanics)</h2><p>How trade mirroring actually works: the API relay, proportional sizing math, order types used, and exactly where slippage between fills comes from.</p></a>
 <a class="card" href="/bridge-pages/articles/copying-multiple-traders-at-once.html"><span class="card-brand">Alertsify</span><span class="card-cat">Copy Trading</span><h2>Copying Multiple Traders at Once: Worth It?</h2><p>Copying multiple traders at once: how to split capital, why correlated trades can double your risk without you noticing, and when one trader is enough.</p></a>
+<a class="card" href="/bridge-pages/articles/spy-qqq-today-quiet-before-cpi-aug-11.html"><span class="card-brand">Draw Lines Make Money</span><span class="card-cat">Macro Events</span><h2>SPY and QQQ Today: Quiet Before CPI</h2><p>SPY and QQQ today: SPY -0.32% to $770.56, QQQ -0.34% to $718.45, both off recent highs into tomorrow's CPI print. Marking levels, not guessing the number.</p></a>
+<a class="card" href="/bridge-pages/articles/spy-options-today-quiet-before-cpi-aug-11.html"><span class="card-brand">Alertsify</span><span class="card-cat">Macro Events</span><h2>SPY Options Today: Quiet Tape, Loud CPI Tomorrow</h2><p>SPY options today closed -0.32% at $770.56 into a CPI print tomorrow morning. What elevated IV heading into the data actually means for position size.</p></a>
 <p style="margin-top: 24px;"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html" style="color: var(--muted); font-size: 13px;">Risk disclosure</a></p>
 </main>
