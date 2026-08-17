@@ -1,120 +1,14 @@
-<title>Assignment Risk on Short Options: What Actually Triggers It</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G331W5FGRC');
-</script>
-
-<meta name="description" content="Assignment risk on short options explained with a real worked trade: what triggers early assignment, what it costs, and how to actually manage it.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Assignment Risk on Short Options: What Actually Triggers It">
-<meta property="og:description" content="Assignment risk on short options explained with a real worked trade: what triggers early assignment, what it costs, and how to actually manage it.">
-<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/assignment-risk-short-options.html">
-<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
-<meta name="twitter:title" content="Assignment Risk on Short Options: What Actually Triggers It">
-<meta name="twitter:description" content="Assignment risk on short options explained with a real worked trade: what triggers early assignment, what it costs, and how to actually manage it.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Assignment Risk on Short Options: What Actually Triggers It", "description": "Assignment risk on short options explained with a real worked trade: what triggers early assignment, what it costs, and how to actually manage it.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-08", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/assignment-risk-short-options.html"}}</script>
-<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/assignment-risk-short-options.html">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
-<style>
-  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
-  html { background: var(--bg); }
-  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
-         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
-  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
-  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
-       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
-  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
-             font-family: Inter, -apple-system, sans-serif; }
-  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
-       font-weight: 700; color: var(--gold); }
-  p { margin: 0 0 22px; }
-  ol { margin: 0 0 22px; padding-left: 24px; }
-  li { margin-bottom: 12px; }
-  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
-  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
-  a { color: var(--accent); }
-  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
-              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
-              border-radius: 10px; font-size: 16px; }
-  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
-  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
-  .related-list li { margin-bottom: 10px; }
-  .related-list a { font-size: 15px; }
-</style>
-<!-- meta: primary_kw=assignment risk on short options; account=@Trusync11511 (Alertsify); word_target=1200-2200 -->
-<article>
-<h1>Assignment Risk on Short Options: What Actually Triggers It</h1>
-<div class="byline">Jake · Alertsify · <span class="pub-date">August 8, 2026</span> · <span class="category-tag">Options Mechanics</span></div>
-
-<p>Assignment risk on short options is the thing nobody explains until it's already happened to your account. You sell a call or a put, collect the premium, and somewhere in the back of your head you know there's a counterparty on the other side who bought that contract from you. Most of the time they never exercise it and the position just expires or you buy it back. Sometimes they do exercise it, and you wake up owning or owing 100 shares of a stock you didn't plan to hold at a price you didn't choose that morning.</p>
-
-<p>I sold covered calls for six months before I understood what actually triggers assignment. I assumed it was random, or that it only happened right at expiration. Neither is true. There's a specific mechanism behind it, and once you know what it is, the risk stops feeling like a lightning strike and starts feeling like something you can plan around.</p>
-
-<h2>What assignment actually is</h2>
-
-<p>When you sell an option — a call or a put — you're not just placing a bet on price direction. You're taking on an obligation. Sell a call and you're agreeing that if the buyer wants to exercise, you'll deliver 100 shares at the strike price. Sell a put and you're agreeing that if the buyer wants to exercise, you'll buy 100 shares at the strike price, no matter what the stock is trading at when it happens.</p>
-
-<p>The buyer of that contract holds the right, not the obligation. They can exercise whenever they want, on any day the option is in the money, right up until expiration. Assignment is what happens on your side of the trade when they use that right. The Options Clearing Corporation runs a random lottery among all the brokers holding short positions in that contract, and if your account gets picked, you're assigned. You don't get a vote and you don't get advance notice — you find out the next morning when the shares show up or disappear from your account.</p>
-
-<h2>The mechanism that actually drives it: extrinsic value</h2>
-
-<p>Random assignment sounds like it could happen any day for no reason, and that's the part that scares people. It's not actually random in practice — it's driven almost entirely by extrinsic value, the part of an option's premium that isn't intrinsic value.</p>
-
-<p>An option's premium has two components: intrinsic value, which is how much the option is in the money, and extrinsic value, which is everything else — time value, volatility premium, the cushion the market builds in because anything could happen before expiration. Early exercise only makes financial sense for the option holder when extrinsic value has shrunk close to zero. If there's still meaningful extrinsic value left in the contract, exercising early means throwing that value away instead of just selling the option on the open market and keeping it. Rational holders don't do that.</p>
-
-<p>So assignment risk isn't spread evenly across the life of a contract. It's almost nonexistent early on, when extrinsic value is fat, and it climbs sharply as expiration approaches and extrinsic value compresses toward zero — especially for options that are deep in the money with only a day or two left. A second trigger sits on top of that: dividends. If you're short a call and the stock is about to go ex-dividend, a holder deep in the money may exercise early specifically to capture that dividend, because the dividend can be worth more than the extrinsic value they'd be giving up.</p>
-
-<h2>A worked example: the trade that taught me this</h2>
-
-<p>I was short a covered call on NVDA. Stock was at $131 a share, I'd sold the $128 call two weeks out for $4.60 in premium, collecting $460 against 100 shares I already owned. The strike was already $3 below the stock price when I sold it — a call I sold in the money on purpose, for the income, figuring I'd either keep the premium if the stock pulled back or get called away at a price I was fine with.</p>
-
-<p>With twelve days left, that $4.60 premium was mostly extrinsic value — the stock was only $3 in the money, so roughly $1.60 of that premium was time and volatility cushion. I wasn't worried about assignment at that point, and I shouldn't have been; the math didn't support it yet.</p>
-
-<p>By day nine, NVDA had run to $138. The call was now $10 in the money, and the premium had compressed to $10.35 — almost pure intrinsic value, with only about $0.35 of extrinsic value left. That $0.35 was the whole ballgame. Once extrinsic value gets that thin, a holder loses almost nothing by exercising early instead of selling the contract, and the odds of assignment go up fast. I got assigned two days later. My 100 shares got called away at $128, I kept the $460 in original premium, but I also gave up the $10-a-share run past my strike that I would have kept if I'd been holding the stock unhedged — call it roughly $1,000 in upside I didn't participate in, on top of the shares themselves being gone.</p>
-
-<p>Nothing about that assignment was random or unfair. The extrinsic value told the story two days before it happened. I just wasn't reading it.</p>
-
-<h2>Calls versus puts: the risk isn't identical</h2>
-
-<p>Short calls and short puts both carry assignment risk, but the practical consequences are different. Get assigned on a short call and you deliver shares you own (covered) or have to buy shares on the open market to deliver them (naked, which is a much bigger problem). Get assigned on a short put and you're forced to buy 100 shares at the strike price, which means you need the cash or margin to actually take that position, whether or not you wanted to own the stock at that moment.</p>
-
-<p>Puts also carry a dividend-driven wrinkle in the opposite direction: put holders have less incentive to exercise early around a dividend, since selling the stock short would forfeit dividend income rather than capture it. Assignment on puts tends to cluster more purely around the extrinsic-value-compression pattern than the dividend pattern that shows up with calls.</p>
-
-<h2>What actually reduces assignment risk</h2>
-
-<p>Watching extrinsic value, not just moneyness, is the real signal. A contract that's deep in the money with two weeks left and still carrying a dollar or more of extrinsic value is a different risk profile than the same strike with two days left and five cents of extrinsic value. Closing or rolling a short position once extrinsic value gets thin is the single most direct way to control when assignment happens instead of finding out about it after the fact.</p>
-
-<p>Ex-dividend dates matter specifically for short calls that are in the money. If you're short a call on a stock going ex-dividend soon and that call has little extrinsic value left, assume assignment is likely the night before the ex-dividend date, not a possibility — a plan, not a surprise.</p>
-
-<p>None of this eliminates assignment risk. It's a structural feature of selling options, not a bug you can patch out. What changes is whether it catches you off guard or lines up with something you already expected and were positioned for.</p>
-
-<h2>Why I stopped tracking extrinsic value by hand</h2>
-
-<p>I used to check the extrinsic value on every short position manually, every evening, doing the subtraction in my head between premium and intrinsic value across however many contracts I had open. It's not hard math. It's just one more thing to remember to do at the exact moment the market is moving and my attention is somewhere else — which is exactly when a thinning contract slips past unnoticed.</p>
-
-<p>That's the actual reason I run my account through Alertsify now. I'm copying entries and exits from a trader whose process already accounts for extrinsic value compression and dividend timing before a position gets anywhere near assignment territory, instead of me doing that math under pressure at 3:50pm and hoping I didn't miss a decimal. It didn't change what assignment risk actually is. It changed whether I was the one who had to notice it in time.</p>
-
-<p>Day 41 of not placing a manual order myself. Almost broke it last week when I saw a short put drifting deep in the money and had the itch to close it by hand — didn't, let the process run, worked out fine.</p>
-
-<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=assignment_risk_short_options" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
-<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
-<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
-<hr>
-<nav aria-label="More articles">
-<p class="section-label">More from Alertsify</p>
-<ul class="related-list">
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html">Options Greeks Explained: Delta, Theta, Gamma in Plain Terms</a></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/covered-calls-explained.html">Covered Calls Explained: The Real Trade-Off, With Math</a></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/what-happens-when-option-expires.html">What Happens When an Option Expires? (ITM vs OTM)</a></li>
-</ul>
-<p><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/">← All articles</a></p>
-</nav>
-</article>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting…</title>
+<link rel="canonical" href="https://www.stackthetrade.com/assignment-risk-short-options/">
+<meta http-equiv="refresh" content="0; url=https://www.stackthetrade.com/assignment-risk-short-options/">
+<meta name="robots" content="noindex">
+<script>window.location.replace("https://www.stackthetrade.com/assignment-risk-short-options/");</script>
+</head>
+<body>
+<p>This page has moved to <a href="https://www.stackthetrade.com/assignment-risk-short-options/">https://www.stackthetrade.com/assignment-risk-short-options/</a>.</p>
+</body>
+</html>

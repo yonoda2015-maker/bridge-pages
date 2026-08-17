@@ -1,78 +1,14 @@
-<title>Options Mechanics Guide: Every Article, One Place</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G331W5FGRC');
-</script>
-
-<meta name="description" content="A full guide to options mechanics: strikes, Greeks, spreads, and expiration. Every article on how options actually work, in one place.">
-<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-mechanics-guide.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Options Mechanics Guide: Every Article, One Place">
-<meta property="og:description" content="A full guide to options mechanics: strikes, Greeks, spreads, and expiration. Every article on how options actually work, in one place.">
-<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/options-mechanics-guide.html">
-<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-drawlines.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-drawlines.png">
-<meta name="twitter:title" content="Options Mechanics Guide: Every Article, One Place">
-<meta name="twitter:description" content="A full guide to options mechanics: strikes, Greeks, spreads, and expiration. Every article on how options actually work, in one place.">
-<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --accent-2: #00e87a; }
-  html { background: var(--bg); }
-  body { background: var(--bg); color: var(--text); font-family: Inter, -apple-system, sans-serif;
-         margin: 0; padding: 0 20px; }
-  main { max-width: 720px; margin: 0 auto; padding: 56px 0 80px; }
-  h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 16px; line-height: 1.25; }
-  main > p { color: var(--muted); font-size: 15.5px; line-height: 1.7; margin: 0 0 18px; max-width: 62ch; }
-  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-                    color: var(--accent); margin: 40px 0 14px; font-weight: 700; }
-  .hub-list { list-style: none; padding: 0; margin: 0; }
-  .hub-list li { border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; }
-  .hub-list a { color: var(--text); font-size: 16px; font-weight: 700; text-decoration: none; line-height: 1.4; }
-  .hub-list a:hover { color: var(--accent); }
-  .hub-list p { color: var(--muted); font-size: 13.5px; margin: 6px 0 0; line-height: 1.55; }
-  .back { margin-top: 40px; }
-  .back a { color: var(--muted); font-size: 13px; }
-</style>
-<main>
-<h1>Options Mechanics Guide</h1>
-<p>Options mechanics is the part most beginners skip past on the way to a strategy — strikes, premium, the Greeks, how expiration actually resolves a contract. The articles below cover the mechanics in the order they tend to bite.</p>
-<p>Every worked example uses real numbers — entry, strike, premium, and outcome — not a formula in the abstract. Pick the mechanic you don't fully trust yet and start there.</p>
-<p class="section-label">Alertsify</p>
-<ul class="hub-list">
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/what-is-0dte-options-trading.html">0DTE Options: What They Are and Why They're Riskier Than They Look</a><p>0DTE options expire the same day you trade them, so there's no time cushion left. Here's what that actually costs, with a real losing trade and the numbers.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/american-vs-european-style-options.html">American Style vs European Style Options Explained</a><p>American style vs European style options: American exercises anytime, European only at expiration. Why SPY and SPX behave differently, with a real example.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/assignment-risk-short-options.html">Assignment Risk on Short Options: What Actually Triggers It</a><p>Assignment risk on short options explained with a real worked trade: what triggers early assignment, what it costs, and how to actually manage it.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/bid-ask-spread-slippage.html">Bid-Ask Spread: The Hidden Cost Eating Small Accounts</a><p>A wide bid-ask spread can turn a correct trade into a loser twice over. Real fill numbers show how spread and slippage quietly drain small accounts.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/call-option-vs-put-option.html">Call Option vs Put Option: The Difference That Cost Me $2,600 to Actually Learn</a><p>Call option vs put option, explained with two real worked trades and a $2,600 mistake from mixing up which one I actually owned.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/can-you-lose-more-than-you-invest-options.html">Can You Lose More Than You Invest in Options? The Real Answer</a><p>Can you lose more than you invest in options? Buying calls or puts, no. Selling naked calls, yes. Here's the real mechanics with worked numbers.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/covered-calls-explained.html">Covered Calls Explained: What They Actually Cost You</a><p>Covered calls explained with real numbers: cap your upside for guaranteed cash now. The exact math on a trade that got called away, and one that didn't.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/credit-spread-vs-debit-spread.html">Credit Spread vs Debit Spread: The Real Difference</a><p>Credit spread vs debit spread, with real numbers on both. One pays you today, one costs you today, and the odds run opposite directions for a reason.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-options-expiration-dates-work.html">How Do Options Expiration Dates Work?</a><p>How do options expiration dates work? The date isn't a fact you check later — it sets the price you pay. Real numbers comparing two expirations, same trade.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-long-to-hold-options-trade.html">How Long to Hold an Options Trade Before You Exit</a><p>How long should you hold an options trade? Long enough to hit target, short enough decay hasn't eaten it. Real numbers from a trade held too long.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-much-money-to-start-trading-options.html">How Much Money Do You Need to Start Trading Options?</a><p>How much money do you need to start trading options? Brokers allow under $100. Doing it right without gambling takes closer to $2,000-$3,000.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-read-implied-volatility.html">How to Read Implied Volatility (IV) in Options</a><p>How to read implied volatility: what IV rank and percentile actually mean, why premium inflates before earnings, and how IV crush works, with real numbers.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-read-an-options-chain.html">How to Read an Options Chain: A Real Walkthrough</a><p>Learn how to read an options chain step by step: strikes, expirations, bid, ask, volume, and open interest, with a real worked example.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-trading-small-account.html">How to Trade Options With a Small Account Without Blowing It Up</a><p>Small accounts don't fail because of bad picks. They fail because of position size and 0-DTE options that feel affordable. Real numbers from a $1,200 account.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/intrinsic-value-vs-extrinsic-value.html">Intrinsic Value vs Extrinsic Value: What's Actually Inside an Option's Premium</a><p>Intrinsic value vs extrinsic value decides whether an option behaves like the stock or like a lottery ticket. Real numbers, no formulas, no dictionary talk.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/iron-condor-options-strategy.html">Iron Condor Options Strategy Explained, With Real Math</a><p>Iron condor options strategy explained with real numbers: four legs, max profit, max loss, and both breakevens on one worked trade.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/is-options-trading-gambling.html">Is Options Trading Gambling? An Honest Answer</a><p>Is options trading gambling? Often, yes, the way beginners actually do it. Here's the honest mechanical difference, with a real trade shown both ways.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/leaps-options-explained.html">LEAPS Options Explained: Long-Term Contracts That Trade Like Stock</a><p>LEAPS are options with a year or more until expiration. They behave more like owning the stock than a short-dated contract does. A real trade, with the numbers.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html">Options Greeks Explained: Delta, Theta, Gamma in Plain Terms</a><p>Options Greeks explained the way I wish someone had explained them to me: Delta, Theta, and Gamma as numbers you check before entering, not textbook theory.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-for-beginners.html">Options for Beginners: What Actually Happens When You Buy a Call (Not the Textbook Version)</a><p>You can be right about SPY direction and still lose on a call. Here's why, with real numbers from a beginner's first year.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/straddle-options-strategy-explained.html">Straddle Options Strategy Explained, With the Actual Math</a><p>The straddle options strategy explained with real numbers: total premium, both breakevens, and why it's a bet on volatility, not direction.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/wheel-strategy-options-explained.html">The Wheel Strategy Explained: Full Cycle, Real Numbers</a><p>The wheel strategy explained with one real trade: cash-secured put, assignment, then a covered call, with running dollar totals at every step.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/theta-decay-explained.html">Theta Decay Explained: What It Actually Costs You</a><p>Theta decay explained with a real options chain example: what time decay costs you day by day, and why holding a losing contract is a math problem, not luck.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/vertical-spread-vs-single-leg-option.html">Vertical Spread vs Single Leg Option: The Real Cost</a><p>Vertical spread vs single leg option, with real numbers on both. One caps your upside to lower your cost, the other pays full price for an open ceiling.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/what-happens-when-option-expires.html">What Happens When an Option Expires? The ITM Trap Nobody Warns You About</a><p>What happens when an option expires depends on one thing: in the money or out. Here's the mechanics, plus a real $18,700 auto-exercise surprise.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/what-is-a-strike-price.html">What Is a Strike Price? How to Actually Pick One</a><p>What is a strike price? The fixed price your option locks in, and the real question beginners skip: how to pick one. Real numbers, one worked example.</p></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/what-percentage-of-options-traders-profit.html">What Percentage of Options Traders Make Money? The Honest Answer</a><p>No single study gives you a clean number. But the honest data on what percentage of options traders make money points the same direction, every time.</p></li>
-</ul>
-<p class="back"><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/">← All articles</a></p>
-</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting…</title>
+<link rel="canonical" href="https://www.stackthetrade.com/tag/options-mechanics/">
+<meta http-equiv="refresh" content="0; url=https://www.stackthetrade.com/tag/options-mechanics/">
+<meta name="robots" content="noindex">
+<script>window.location.replace("https://www.stackthetrade.com/tag/options-mechanics/");</script>
+</head>
+<body>
+<p>This page has moved to <a href="https://www.stackthetrade.com/tag/options-mechanics/">https://www.stackthetrade.com/tag/options-mechanics/</a>.</p>
+</body>
+</html>

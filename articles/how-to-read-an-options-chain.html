@@ -1,97 +1,14 @@
-<!-- meta: The options chain isn't complicated. It just has eleven columns nobody explained to you before you clicked buy. -->
-<title>How to Read an Options Chain: A Real Walkthrough</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G331W5FGRC');
-</script>
-
-<meta name="description" content="Learn how to read an options chain step by step: strikes, expirations, bid, ask, volume, and open interest, with a real worked example.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="How to Read an Options Chain: A Real Walkthrough">
-<meta property="og:description" content="Learn how to read an options chain step by step: strikes, expirations, bid, ask, volume, and open interest, with a real worked example.">
-<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-read-an-options-chain.html">
-<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
-<meta name="twitter:title" content="How to Read an Options Chain: A Real Walkthrough">
-<meta name="twitter:description" content="Learn how to read an options chain step by step: strikes, expirations, bid, ask, volume, and open interest, with a real worked example.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to Read an Options Chain: A Real Walkthrough", "description": "Learn how to read an options chain step by step: strikes, expirations, bid, ask, volume, and open interest, with a real worked example.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-09", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-read-an-options-chain.html"}}</script>
-<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/how-to-read-an-options-chain.html">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
-<style>
-  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
-  html { background: var(--bg); }
-  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
-         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
-  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
-  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
-       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
-  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
-             font-family: Inter, -apple-system, sans-serif; }
-  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
-       font-weight: 700; color: var(--gold); }
-  p { margin: 0 0 22px; }
-  ol { margin: 0 0 22px; padding-left: 24px; }
-  li { margin-bottom: 12px; }
-  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
-  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
-  a { color: var(--accent); }
-  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
-              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
-              border-radius: 10px; font-size: 16px; }
-  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
-  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
-  .related-list li { margin-bottom: 10px; }
-  .related-list a { font-size: 15px; }
-  .chain-table { width: 100%; border-collapse: collapse; margin: 0 0 22px; font-family: Inter, sans-serif; font-size: 14px; }
-  .chain-table th, .chain-table td { border: 1px solid rgba(255,255,255,0.14); padding: 8px 6px; text-align: right; }
-  .chain-table th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; }
-  .chain-table td:first-child, .chain-table th:first-child { text-align: left; }
-  .chain-table tr.strike-row td { background: rgba(232,182,76,0.08); font-weight: 700; }
-</style>
-<article>
-<h1>How to Read an Options Chain: A Real Walkthrough</h1>
-<div class="byline">Alertsify · copy the trade, not the guesswork · <span class="pub-date">August 9, 2026</span> · <span class="category-tag">Options Mechanics</span></div>
-<p>The first time I opened an options chain I closed the tab. Rows of numbers, calls on one side, puts on the other, a strip of dates across the top I didn't understand, and a wall of columns with headers like "OI" that meant nothing to me. I went back to just buying the stock for another six months because that screen looked like a cockpit and I didn't have a license. Learning how to read an options chain turned out to take about fifteen minutes once someone walked me through it in order, instead of throwing the whole table at me at once.</p>
-<p>That's what this is. Not a glossary. A walkthrough, in the order you'd actually use it: what the layout means, which columns matter for your first few trades, and how to go from "I think this stock is going up" to a specific contract with a specific price on it. Once you've done this a handful of times, the process of reading an options chain stops being a puzzle and turns into something closer to reading a spreadsheet — a little dry, but nothing you dread opening.</p>
-<h2>The basic layout: calls, puts, strikes, expirations</h2>
-<p>Every broker draws the options chain a little differently, but the bones are the same. Calls sit on one side of the table, puts on the other. Down the middle is a single column of strike prices, shared by both sides — the $90 call and the $90 put live on the same row, because they reference the same strike, just betting in opposite directions. Across the top, above the whole table, is a row of expiration dates you can click through: this Friday, next Friday, the monthly a few weeks out, sometimes a date months away. Pick a different expiration and the entire chain reloads with a new set of prices for the same strikes, because a contract expiring in three days is worth something different than the same strike expiring in six weeks.</p>
-<p>So the mental model is: expiration first, then strike, then side. You choose when, you choose the price level, you choose whether you think it's going up or down. Everything else on the row is the market telling you what that specific bet currently costs and how easy it'll be to get in and out of.</p>
-<h2>What the columns actually mean</h2>
-<p>A typical row has somewhere between six and eleven columns. You don't need all of them on day one. Here's what each one means and which ones actually matter when you're getting started.</p>
-<p><strong>Bid and ask.</strong> The bid is the highest price someone's currently willing to pay for that contract. The ask is the lowest price someone's willing to sell it for. These two matter immediately, on your very first trade, because they set your real entry and exit price — not the last price, the bid and ask. I've written about how the gap between them, the bid-ask spread, quietly eats into a trade before the stock even moves; that piece goes deep on the cost side, so I won't repeat it here. For reading the chain, just know: buying, you're paying close to the ask. Selling, you're getting close to the bid. Everything in between is spread.</p>
-<p><strong>Last price.</strong> The price of the most recent trade that actually went through. Useful as a sanity check, but it can be stale — if nobody's traded that contract in twenty minutes, last price is twenty minutes old while the bid and ask are live right now. Don't anchor to it.</p>
-<p><strong>Volume.</strong> How many contracts have traded today, reset to zero every morning. High volume on a strike means people are actively trading it right now, which usually means a tighter bid-ask spread and an easier fill. Low volume — single digits, or a dash — is a warning sign before you enter, not after.</p>
-<p><strong>Open interest.</strong> This one's different from volume and beginners mix them up constantly. Open interest is the total number of contracts at that strike and expiration that are currently open — bought and not yet closed or expired — accumulated over the life of that contract, not reset daily. Volume tells you today's activity. Open interest tells you how much standing liquidity exists at that specific strike, period. A strike with volume of 400 today but open interest of 30,000 has a deep, established market. A strike with volume of 400 today but open interest of 60 means today was an unusually busy day on a contract nobody normally touches — that liquidity might vanish tomorrow. For gauging whether a strike is genuinely liquid, not just busy for an hour, open interest is the number to check.</p>
-<p><strong>The rest.</strong> Implied volatility, delta, and the other Greeks columns are real and useful later, but they're not what trips up a beginner's first few trades. Get comfortable with bid, ask, volume, and open interest first. The rest can wait.</p>
-<h2>Finding a specific contract on the chain</h2>
-<p>Say you're looking at a mid-cap software stock trading around $92, and you think it's headed toward $97 over the next three weeks on an upcoming product announcement. Here's the mechanical process, in order:</p>
-<ol>
-<li><strong>Pick your expiration.</strong> Click the date roughly three weeks out on the strip across the top of the chain. The whole table reloads to show pricing for that specific expiration.</li>
-<li><strong>Scan down to your strike.</strong> You're bullish, so you look at the calls side. The stock is at $92, so you scan the strike column — the shared middle column — down to $95, a strike slightly above the current price that would benefit from the move you expect.</li>
-<li><strong>Read the row.</strong> On that $95 call row, you find the numbers you actually need: bid, ask, volume, open interest, sitting right there in that one line.</li>
-</ol>
-<p>Here's what that row might actually look like, next to the row above and below it for context:</p>
-<table class="chain-table">
-<tr><th>Strike</th><th>Bid</th><th>Ask</th><th>Last</th><th>Volume</th><th>Open Int.</th></tr>
-<tr><td>$90</td><td>3.80</td><td>3.95</td><td>3.85</td><td>612</td><td>4,120</td></tr>
-<tr class="strike-row"><td>$95</td><td>1.55</td><td>1.70</td><td>1.62</td><td>891</td><td>7,340</td></tr>
-<tr><td>$100</td><td>0.40</td><td>0.52</td><td>0.45</td><td>203</td><td>1,980</td></tr>
-</table>
-<p>Reading that $95 row: the bid is $1.55, the ask is $1.70, a fifteen-cent spread on a contract worth roughly $1.62 at the midpoint — narrow enough that a market order won't punish you. Volume of 891 today and open interest of 7,340 both say the same thing: this strike is genuinely active, not a fluke. If you bought right now, you'd expect a fill close to $1.70, not the $1.62 last-price number your eye probably jumped to first. One contract at $1.70 costs $170, since options prices quote per share and each contract controls 100 shares. That's the number you're actually risking, not the strike price, not the stock price — the ask, times 100.</p>
-<p>Compare that to the $100 row for a second. Volume of 203 and open interest of 1,980 are both thinner, and the spread — 40 to 52, twelve cents on a fifty-cent contract — is proportionally much wider. Same chain, same expiration, meaningfully worse to trade. That's the kind of difference you can only catch by actually reading the row instead of just picking a strike because it "sounds cheap."</p>
-<p>That three-step process — pick the expiration, scan to the strike, read the row — is really the entire skill. Knowing how to read an options chain isn't about memorizing every column header on the screen. It's about knowing which three or four numbers on that row actually change your fill, and ignoring the rest until you need them.</p>
-<h2>How to read an options chain once you've done it a few times</h2>
-<p>None of this tells you which direction the stock is going. Reading an options chain doesn't predict anything — it just stops you from getting a fill you didn't understand you were agreeing to. Before I could read a chain properly, I'd pick a strike off the last price, place the order, and get surprised by what I actually paid. Once bid, ask, volume, and open interest became a habit to check in that order, the surprises mostly stopped. Not because the trades got better. Because I finally knew what I was buying before I bought it.</p>
-<p>The chain itself doesn't get easier to read faster than a human can read it — that part's just practice. What I've changed since is how much I dwell on it once I've decided to act. I used to sit on a chain rechecking the same row for a full minute, second-guessing the spread, and by the time I clicked, the quote had moved against me anyway. These days my account follows a trader I copy through Alertsify — the entry fires the moment the signal does, on the actual current bid and ask, not the numbers I was staring at ninety seconds earlier while I talked myself into or out of the trade.</p>
-<p>If you take one thing from this: the next time you're staring at a broker's options chain feeling like it was built to confuse you, remember it's only three moves — expiration, strike, row — repeated across a lot of columns. Learning how to read an options chain is a fifteen-minute skill wearing a cockpit's costume.</p>
-<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=options_chain" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
-<p class="note">Disclosure: that&#x27;s an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There&#x27;s a free trial if you want to look around first.</p>
-<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
-</article>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting…</title>
+<link rel="canonical" href="https://www.stackthetrade.com/how-to-read-an-options-chain/">
+<meta http-equiv="refresh" content="0; url=https://www.stackthetrade.com/how-to-read-an-options-chain/">
+<meta name="robots" content="noindex">
+<script>window.location.replace("https://www.stackthetrade.com/how-to-read-an-options-chain/");</script>
+</head>
+<body>
+<p>This page has moved to <a href="https://www.stackthetrade.com/how-to-read-an-options-chain/">https://www.stackthetrade.com/how-to-read-an-options-chain/</a>.</p>
+</body>
+</html>

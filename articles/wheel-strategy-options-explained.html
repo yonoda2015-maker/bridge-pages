@@ -1,117 +1,14 @@
-<title>The Wheel Strategy Explained: Full Cycle, Real Numbers</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G331W5FGRC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G331W5FGRC');
-</script>
-
-<meta name="description" content="The wheel strategy explained with one real trade: cash-secured put, assignment, then a covered call, with running dollar totals at every step.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="The Wheel Strategy Explained: Full Cycle, Real Numbers">
-<meta property="og:description" content="The wheel strategy explained with one real trade: cash-secured put, assignment, then a covered call, with running dollar totals at every step.">
-<meta property="og:url" content="https://yonoda2015-maker.github.io/bridge-pages/articles/wheel-strategy-options-explained.html">
-<meta property="og:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yonoda2015-maker.github.io/bridge-pages/assets/og-alertsify.png">
-<meta name="twitter:title" content="The Wheel Strategy Explained: Full Cycle, Real Numbers">
-<meta name="twitter:description" content="The wheel strategy explained with one real trade: cash-secured put, assignment, then a covered call, with running dollar totals at every step.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Wheel Strategy Explained: Full Cycle, Real Numbers", "description": "The wheel strategy explained with one real trade: cash-secured put, assignment, then a covered call, with running dollar totals at every step.", "author": {"@type": "Person", "name": "Alertsify"}, "publisher": {"@type": "Organization", "name": "Alertsify"}, "datePublished": "2026-08-09", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://yonoda2015-maker.github.io/bridge-pages/articles/wheel-strategy-options-explained.html"}}</script>
-<link rel="canonical" href="https://yonoda2015-maker.github.io/bridge-pages/articles/wheel-strategy-options-explained.html">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="/bridge-pages/assets/favicon-32.png">
-<style>
-  :root { --bg: #04060a; --text: #e8ecf1; --muted: #8a92a6; --accent: #5b9dff; --gold: #e8b64c; }
-  html { background: var(--bg); }
-  body { background: var(--bg); color: var(--text); font-family: Georgia, 'Times New Roman', serif;
-         margin: 0; padding: 0 20px; font-size: 18px; line-height: 1.75; }
-  article { max-width: 680px; margin: 0 auto; padding: 56px 0 80px; }
-  h1 { font-size: 34px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 12px;
-       font-family: Inter, -apple-system, sans-serif; font-weight: 800; }
-  .byline { color: var(--muted); font-size: 14px; margin-bottom: 40px;
-             font-family: Inter, -apple-system, sans-serif; }
-  h2 { font-size: 24px; line-height: 1.3; margin: 44px 0 16px; font-family: Inter, sans-serif;
-       font-weight: 700; color: var(--gold); }
-  p { margin: 0 0 22px; }
-  ol { margin: 0 0 22px; padding-left: 24px; }
-  li { margin-bottom: 12px; }
-  hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 44px 0; }
-  .note { color: var(--muted); font-style: italic; font-size: 14.5px; }
-  a { color: var(--accent); }
-  .cta-link { display: inline-block; background: var(--accent); color: #04121f; font-weight: 700;
-              font-family: Inter, sans-serif; text-decoration: none; padding: 13px 22px;
-              border-radius: 10px; font-size: 16px; }
-  .section-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
-  .related-list { list-style: none; padding: 0; margin: 0 0 24px; font-family: Inter, sans-serif; }
-  .related-list li { margin-bottom: 10px; }
-  .related-list a { font-size: 15px; }
-</style>
-<!-- meta: primary_kw=wheel strategy options explained; account=@Trusync11511 (Alertsify); word_target=1200-2200 -->
-<article>
-<h1>The Wheel Strategy Explained: Full Cycle, Real Numbers</h1>
-<div class="byline">Jake · Alertsify · <span class="pub-date">August 9, 2026</span> · <span class="category-tag">Options Mechanics</span></div>
-
-<p>The wheel strategy explained in a sentence sounds almost too simple: sell a put, maybe get the stock, sell a call on it, maybe get called away, repeat. I ran it for most of year three, after I'd finally stopped losing money and wanted something mechanical I could execute without second-guessing myself every morning. The mechanics are simple. What surprised me was how much the assignment step actually changes your risk beyond the paperwork. Here's the whole cycle with one real trade, start to finish, so you can see where the money actually comes from at each stage.</p>
-
-<h2>What the wheel actually is</h2>
-
-<p>The wheel is two strategies stitched together in sequence, not one new thing. You start by selling a cash-secured put on a stock you'd genuinely be fine owning at a lower price. If the stock stays above your strike, the put expires worthless and you keep the premium — that's step one, done, no stock changes hands. If the stock drops below your strike, you get assigned and you buy 100 shares at that strike price, funded by the cash you set aside when you sold the put. That's the "cash-secured" part — the money to buy the shares was sitting there the whole time.</p>
-
-<p>Once you own the shares, you're not done. You sell a covered call against them, usually at or above your cost basis. If the stock stays below that call strike, the call expires worthless, you keep the premium, and you sell another call the next cycle. If the stock rises above the call strike, your shares get called away and you're back to holding cash — which is exactly where you started, except with more money than you began with if the whole cycle worked. Then you sell another put and the wheel turns again.</p>
-
-<h2>The trade with real numbers: a full cycle on AMD</h2>
-
-<p>Say AMD is trading at $102 a share. You don't want to pay $102 for it, but you'd be happy to own it at $95. So you sell a cash-secured put, strike $95, three weeks out, and collect $1.85 a share in premium — $185 total, against the $9,500 you set aside to cover the shares if assigned.</p>
-
-<p>Three weeks later, AMD has drifted down to $91. Your $95 put is in the money, and you get assigned. You buy 100 shares at $95, paying $9,500 cash, the money that was already sitting there. Your running total so far: $9,500 spent on stock, minus the $185 premium already collected, for a real cost basis of $93.15 a share instead of the full $95. You now own 100 shares of AMD at an effective cost of $9,315.</p>
-
-<p>Now the covered call step starts. AMD is sitting at $91, below your cost basis, so you sell a call with some room to recover — strike $97, three weeks out, for $1.30 a share, $130 total. Running total: $185 plus $130 in premium collected so far, $315, against your original $9,500 cash outlay.</p>
-
-<p>Three weeks after that, AMD has climbed back to $99. Your $97 call is in the money and your shares get called away. You sell 100 shares at $97, receiving $9,700. Add the $315 in total premium collected across both legs, and your full proceeds are $10,015 against the $9,500 you originally set aside. Net result: $515 profit on a stock that, from your original $95 put strike to your final $97 call strike, only moved four dollars in your favor. The wheel captured $515 in a range where simply buying and holding from $95 to $99 would have made $400 — the two premiums added $115 more than the stock move alone would have paid, and you were paid something even in the weeks the stock did nothing.</p>
-
-<h2>Why the premium shows up twice</h2>
-
-<p>The reason the wheel usually beats a plain buy-and-hold over the same range is that you get paid at both ends. Selling the put pays you for agreeing to buy at a price you already wanted. Selling the call pays you for agreeing to sell at a price you're already fine with. Neither premium depends on the stock actually reaching either strike — you collect for making the agreement, not for being right about direction. That's the entire edge. It isn't free money and it isn't a guaranteed win; it's a structural payment for taking on the same obligations you'd probably accept anyway if you're picking strikes on a stock you actually want to own.</p>
-
-<h2>Where the wheel actually loses money</h2>
-
-<p>The put side is where the real risk lives, and it's easy to underestimate because collecting premium feels like the safe part. If AMD had gapped down to $70 instead of drifting to $91, you'd still be assigned at $95, still buying 100 shares at a price well above where the stock is trading, and the $185 premium does almost nothing to offset an $18 per share paper loss. The cash-secured put isn't insurance against a real decline. It's an agreement to buy at a fixed price no matter how far the stock actually falls below it, and the premium is small compensation next to a sharp drop.</p>
-
-<p>The call side has a smaller but real cost too: if AMD had ripped to $130 instead of $99, your shares still get called away at $97, and you miss every dollar of upside past that strike. You already saw this trade-off if you've read anything about covered calls on their own — the wheel doesn't remove that cost, it just wraps it inside a bigger cycle that also collects a second premium on the way in.</p>
-
-<h2>Picking strikes that actually make sense</h2>
-
-<p>The put strike should be a price you'd genuinely want to own the stock at, instead of the strike with the fattest premium. Chasing yield on a stock you don't actually want to hold turns a mechanical income strategy into a bag-holding problem the first time the market drops. The call strike, once you're assigned, should sit at or above your real cost basis — not your original stock price, your cost basis after subtracting the put premium — so that if you do get called away, you're locking in a gain instead of realizing a loss you sold a call to avoid looking at.</p>
-
-<p>Expiration length matters more than people give it credit for. Shorter cycles, two to four weeks, mean you're resetting your strike more often and can react faster if the stock's range shifts. Longer cycles collect more premium per trade but leave you sitting through more news and more chances for the stock to move outside the range you priced in when you sold.</p>
-
-<h2>Why I stopped running this by hand</h2>
-
-<p>The wheel sounds mechanical, and on paper it is, but running it manually across more than one or two names at a time means tracking cost basis after assignment, remembering which leg you're on for each position, and picking the next strike under time pressure while the stock is already moving. I lost track of my real cost basis on a position once during year one and sold a call below what I'd actually paid — small loss, but it was a math error, not a market call, and those are the ones that sting the most because you did them to yourself.</p>
-
-<p>That's the part I handed off to Alertsify. I still decide which stock I want to wheel and roughly what range I'm comfortable owning it in — that judgment call stays mine. What changed is the execution: which strike, which expiration, remembering I'm on the covered-call leg versus the put leg of a given name. The system doesn't get tired at the end of a long week and doesn't forget which cost basis applies to which lot.</p>
-
-<p>Day 19 of not placing a manual order myself. Nearly touched one on Tuesday when a put I'd have picked a different strike on looked obviously wrong to me — held off, let it run, and it closed fine two days later.</p>
-
-<h2>What to take from this</h2>
-
-<p>The wheel strategy is a cash-secured put and a covered call, run back to back on the same stock, and every dollar it makes comes from premium collected on both legs plus whatever the stock itself moves between your strikes. It works best on stocks you'd own anyway at a price you'd actually pay, with strikes set from your real math, not the biggest number on the option chain. It doesn't remove the downside of owning the stock and it doesn't remove the upside you give away on the call — it just gets paid twice for agreements you were mostly willing to make regardless.</p>
-
-<p>If you want to see how I handle the execution side without tracking every strike and cost basis by hand:</p>
-<p><a class="cta-link" href="https://whop.com/checkout/plan_xlFGmKxHOZPlz/?a=greekrummy9a65&amp;utm_source=article&amp;utm_medium=x_articles&amp;utm_campaign=wheel_strategy_options" target="_blank" rel="noopener sponsored">Start the free trial →</a></p>
-<p class="note">Disclosure: that's an affiliate link — I may earn a commission if you sign up for a paid plan, at no extra cost to you. There's a free trial if you want to look around first.</p>
-<p class="note"><a href="https://yonoda2015-maker.github.io/bridge-pages/risk-disclosure.html">Full risk disclosure</a></p>
-<hr>
-<nav aria-label="More articles">
-<p class="section-label">More from Alertsify</p>
-<ul class="related-list">
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/covered-calls-explained.html">Covered Calls Explained: The Real Trade-Off, With Math</a></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/assignment-risk-short-options.html">Assignment Risk on Short Options: What Actually Triggers It</a></li>
-<li><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/options-greeks-explained.html">Options Greeks Explained: Delta, Theta, Gamma in Plain Terms</a></li>
-</ul>
-<p><a href="https://yonoda2015-maker.github.io/bridge-pages/articles/">← All articles</a></p>
-</nav>
-</article>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting…</title>
+<link rel="canonical" href="https://www.stackthetrade.com/wheel-strategy-options-explained/">
+<meta http-equiv="refresh" content="0; url=https://www.stackthetrade.com/wheel-strategy-options-explained/">
+<meta name="robots" content="noindex">
+<script>window.location.replace("https://www.stackthetrade.com/wheel-strategy-options-explained/");</script>
+</head>
+<body>
+<p>This page has moved to <a href="https://www.stackthetrade.com/wheel-strategy-options-explained/">https://www.stackthetrade.com/wheel-strategy-options-explained/</a>.</p>
+</body>
+</html>
